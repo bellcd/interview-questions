@@ -1,6 +1,6 @@
-# interview-questions
+# Interview Questions
 
-A collection of interview questions I've been asked, to help you better prepare for software development interviews.
+A collection of interview questions I've been asked, to help you better prepare for software development interviews - specifically full stack JavaScript Software Engineer interviews.
 
 ### Real Interview Questions
 
@@ -26,11 +26,34 @@ A collection of interview questions I've been asked, to help you better prepare 
    - A team & management that set realistic goals
    - competitive compensation package
 6. Tell me about yourself? / Who are you as a software engineer / Why do you do this? What do you like about development?
-   - personal narrative ...
+   1. personal narrative ...
 7. What do you dislike about development?
-   - Being roadblocked w/deadlines. Teamwork aspect of web development is very important here.
+   1. Being roadblocked w/deadlines. Teamwork aspect of web development is very important here.
 8. What do you think is the largest problem with the UI/UX that if solved, would increase our conversion rate from visitor to paying user?
-   - ...
+   1. ...
+9. What's something your previous manager did very well? Not so well?
+   1.  ...
+10. What are the responsibilities of a web developer?
+    1.  Building / maintaining web applications / websites
+        1.  front end is more concerned with presentation & user interface.
+        2.  back end is more concerned with storing, retrieving, & sending data to the front end.
+11. How do you take into account SEO, maintainability, UX, performance, & security when you're building a web application?
+    1.  SEO is its own field, but web developers can be expected to know some basics (ie, avoid keyword stuffing, use something like [Yoast](https://yoast.com/) if possible)
+    2.  Software development is all about tradeoffs - maintainability, UX, performance, & security are all affected by decisions you make regarding those tradeoffs, ie:
+        1.  Maintainability - are you incurring technical debt by doing something a "fast" way instead of a cleaner, more best-practice aligned way?
+        2.  UX - it might be harder for you to code it a certain way, but perhaps that leads to a better UX
+        3.  Performance - there are established patterns of more & less efficient ways to accomplish things - ie, don't load a 2000 x 2000px image if all you're displaying is a thumbnail
+        4.  Security - same as above with the patterns, ie, don't submit email & passwords to a server as query strings, they should go in the body of HTTPS POST requests
+12. Describe your workflow when you create a web page or web app?
+    1.  Ideally, you want to start from a user story, identify key points of the UX, create a mockup of the design, get stakeholder feedback, build out a prototype, get stakeholder feedback again, add tests (or tests first if doing TDD), then add features as needed
+13. Tell me about a project that you're particularly proud of. What did you do that worked out well?
+    1.  ...
+14. What steps do you take to balance demanding client requirements?
+    1.  The biggest thing is setting realistic expectations upfront. ie, good-cheap-fast. You get 2 out of the 3. If the client insists on all three, you work with them underpinnings / efficiencies you can discover that enable you to adjust that triangle.
+15. How are you keeping up with the latest developments in web development?
+    1.  building side projects with new technologies
+    2.  medium / dev.to / etc ... articles
+    3.  YouTube channels / courses from prominent engineers
 
 #### React
 1. Could you describe the React component lifecycle? When in the lifecycle would you bind to events?
@@ -131,15 +154,19 @@ A collection of interview questions I've been asked, to help you better prepare 
 
 1. What's the difference between
     1. inline and inline-block?
-       - inline-block can assign a height property TODO: link to stackoverflow answer
+       1. inline-block can assign a height property TODO: link to stackoverflow answer
+    2. CSS3 variables & SASS variables?
+       1. TODO: finish this
 2. What CSS would you use to turn a span into a button?
     - TODO: finish
 3. Describe the cascading part of CSS
     - TODO: finish
 4. What HTML & CSS would you use to make a horizontal nav bar?
-    - TODO: finish
+   1. TODO: finish
 5. What is a float?
-    - A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
+   1. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
+6. What values of the CSS display property can you remember offhand?
+   1. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
 #### Project Management
 
@@ -390,3 +417,53 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       2. clean up unneeded resources
       3. try a request again
    2. > Run a callback "after the call stack has unwound but before the event loop continues" [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#why-use-process-nexttick)
+
+
+### Browsers
+
+1. What's the difference between:
+   1.  AJAX & page requests?
+       1. AJAX (XMLHttp) requests
+          1. made by JavaScript, & only JavaScript
+          2. sent to the server AFTER the page has loaded
+          3. is a request for **data**
+       2. page requests
+          1. initiated by the browser (in whatever code the browser is written in, probably C++)
+          2. THIS is the request for the initial page (or a new / updated / different page)
+          3. is a request for a document (in some format, like HTML)
+   2. web & internet?
+      1. web
+         1. series of documents using a markup language (like HTML)
+         2. with hyperlinks linking them together
+         3. and a browser to read those documents (screen readers are also browsers)
+      2. internet
+         1. many other protocols / networks, including:
+            1. email servers
+            2. FTP
+            3. 90s style internet chat rooms (AOL / Yahoo Mail / etc...)
+            4. SSH
+   3. local storage & cookies
+      1. TODO: finish this
+   4. TCP & UDP
+      1. TCP specifies that the client tell the server info about the message (ie, what / how many packets, etc...) it's sending, so the server can be assured it received all the packets of a message.
+         1. **TCP is slower than UDP**
+      2. UDP simply sends packets, without metadata about those packets. Use case is really games, where performance (especially of the system as a whole) is much more critical than dropping ceratin packets.
+2. Does a 2xx status code always mean the request was completely succeessful?
+   1. 200-something status codes do indeed mean success, but not necessarily complete & utter success.
+      1. 206 status means partial success (for example, perhaps 14 of your 15 database queries were successful)
+3. Do subdomains have unique IP addresses?
+   1. yes
+4. How many unique requests can be outstanding to a given IP address?
+   1. 20
+      1. for example, a page can simultaneously have 20 open requests each to:
+         1. blog.fb.com
+         2. fb.com
+         3. www.fb.com
+         4. etc...
+5. Is there a general ordering for script & link tags in the head of an HTML document? Why? Any exceptions?
+   1. TODO: finish
+
+
+### Accessibility (A11y)
+
+1. What are aria labels & why are they used?
