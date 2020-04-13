@@ -106,9 +106,9 @@ A collection of interview questions I've been asked, to help you better prepare 
 9. Tell me about a time you missed a deadline, what happened, and how did you fix it?
    - ...
 10. Tell me about a time you've worked harder than you should've, and why you did it?
-    -  ...
+    1. ...
 11. What browser do you use to develop and why?
-   - Chrome, dev tools features
+    1. Chrome, dev tools features
 
 #### Page Load Speed
 
@@ -139,15 +139,50 @@ A collection of interview questions I've been asked, to help you better prepare 
 #### Workflow
 
 1. What's the difference between a text editor & an IDE?
-  - A text editor is for more general purpose text editing (ie, Microsoft Word is a text editor), whereas an Integrated Development Environment has many more features specifically targeted at developers to make their workflows more efficient (ie, syntax highlighting, code completion, integrated terminals, etc...)
+   1. A text editor is for more general purpose text editing (ie, Microsoft Word is a text editor), whereas an Integrated Development Environment has many more features specifically targeted at developers to make their workflows more efficient (ie, syntax highlighting, code completion, integrated terminals, etc...)
 
 #### Fundamentals
 
-1. What's the difference between
-    1.  TODO: finish
-    2.  a variable & a function
-    3.  an id and a class in CSS?
-2. How does the internet work?
+1. Explain:
+   1. scope
+      1. The areas of a running program where a lookup for a given variable can happen
+   2. var VS const VS let
+      1. three (3) ways of declaring variables in JavaScript
+      2. var - uses function scope
+      3. const & let
+         1. Both use block scope
+         2. const variables cannot be reassigned, let variables can
+2. What's the difference between
+    1. TODO: finish
+    2. a variable & a function
+    3. an id and a class in CSS?
+    4. double (==) & triple (===) equality
+        1. double compares with type coercion on, triple with type coercion off
+    5. arrow function & 'normal' function
+       1. normal function
+          1. declared with the `function` keyword
+          2. creates a new `this` context
+       2. arrow function
+          1. declared with arrow function syntax `() => {}`
+          2. uses the `this` context of its containing scope
+    6. the functions `call` & `apply`. What are they used for?
+        1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
+        2. `call` & `apply` are used to invoke another function, optionally with:
+           1. a different `this` context
+           2. additional arguments
+    7. `JSON.stringify()` & `toString()`
+        1. `toString()`
+            1. method on `Object.prototype`
+            2. can return different (sometimes surprising!) results for different values (ie, for an obj returns `[object Object]`)
+        2. `JSON.stringify()`
+            1. method on `JSON`
+            2. intended to serialize values into the JSON format for transmission or storage, so the results tend to be more predictable than `toString()`
+               1. but doesn't serialize functions or undefined
+    8. dot & bracket notation in JavaScript objects?
+       1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
+          1. dot notation looks for literally every character after the dot
+          2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
+3. How does the internet work?
     - TODO: finish
 
 #### CSS
