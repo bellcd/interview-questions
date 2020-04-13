@@ -237,3 +237,156 @@ add5(6) // 11
 |Concurrency - more scalable code, because you can run multiple functions in parallel (because they're not relying on external state to be a certain way, they're always creating NEW state||
 
 There are libraries such as Immutable.js & Immer to make handling this easier in JavaScript
+
+#### Node.js
+
+1. What is Node.js?
+   1. an open source, cross platform runtime environment for executing JavaScript (ie, so that JavaScript can get exectued outside of web browsers)
+      1. In 2009, Ryan Dahl, creator of Node.js
+         1. Took Google's V8 engine, embedded it in a C++ program, which he called Node.js
+         2. This program includes the JavaScript V8 engine, as well as some additional modules that provide backend specific functionality (ie, browsers do NOT have these modules, because they're designed to run client side JavaScript - for example, Node doesn't have a DOM)
+2. What is Node.js used for?
+   1. Building web servers, back-end services (APIs), that power client apps (web apps and mobile apps)
+3. What is Node.js good for?
+   1. highly scalable
+   2. data intensive
+   3. real-time apps
+4. What separates Node.js from other back end architectures / frameworks? (like django, rails, ASP.NET, etc...)
+   1. relatively easy to get started, so prototyping can happen relatively faster (fits better with Agile development)
+   2. Can build highly scalable services that are quite fast
+      1. Used in production by giants like Walmart, [Paypal](https://medium.com/paypal-engineering/node-js-at-paypal-4e2d1d08ce4f), [Netflix](https://www.youtube.com/watch?v=gtjzjiTI96c&list=PLfXiENmg6yyUpIVY9XVOkbdmBPx6PUm9_), etc...
+   3. JavaScript everywhere (so the same language for front & back ends)
+      1. leads to cleaner & more consistent source code (ie, same naming conventions, tools, & best practices)
+   4. Large ecosystem of open source libraries available, through npm
+5. Explain several differences between Node.js & client side JavaScript
+   1. There are no `window` / `document` global objects in Node.js, because **Node.js is a different C++ program than browsers** are, so they provide **different environment objects**
+      1. Node.js provides modules like fs, path, http, event, os, etc...
+   2. Both Node.js & the browser (Chromium, specifically) share the same JavaScript engine (V8), but they provide **different runtime environments for JavaScript**
+6. Explain the Node.js architecture
+   1. Uses the same JavaScript engine that Chrome (& now Edge) use, V8
+   2. Node.js is NOT a ______ (so comparisons to _____ are misguided)
+      1. programming language (like Ruby / C# / etc...)
+      2. framework (ASP.NET, Rails, Django / etc...)
+   3. Non-blocking (asynchronous)
+      1. A single thread is used to handle multiple requests
+      2. This is in contrast to blocking (synchronous) architecture (defaults for Rails / ASP.NET)
+         1. When a request is received on the server, a thread is allocated to handle that request
+         2. It's likely that there's some asynchronous task (database query, file I/O, etc...) that needs to happen to complete the request
+         3. While the async task is happening, the thread is sitting there, waiting
+            1. it CANNOT be used to serve another client (another request)
+         4. **So to handle another request, we need another thread**
+            1. When we have many concurrent clients (requests), **each request gets a separate thread**
+            2. At some point, we're going to run out of threads to serve clients (all threads busy!)
+            3. New clients have to wait until free thread are available OR we need to add more hardware (ie, increase the number of available threads in the whole system - $$$)
+               1. Not using threads efficiently (they're waiting, not doing anything) during the async portion of the requests
+         5. Node.js apps are asynchronous by default
+            1. Single thread that handles all requests
+            2. When the asynchronous portion of the request finishes, it puts a message in the event queue
+               1. Node.js continuously monitors this queue in the background. When there's an event here, it takes it out & processes it.
+            3. This kind of architecture is** ideal for I/O intensive apps** (ie, lots of disk and / or network access)
+               1. Can serve more clients without the need to add more hardware (because the thread isn't waiting during the asynchronous portion of the requests, the one single thread gets released to serve other clients)
+            4. Because of this architecture, Node.js is terrible for CPU intensive apps
+               1. Because there's only the one (1) single thread to do JavaScript work on, so if you keep that thread busy with CPU heavy tasks (video encoding / image manipulation), everything else has to wait
+         6. Blocking in Node.js
+            1. Blocking in Node.js is when the Node.js process needs to wait for the completion on non-JavaScript operations (like network of file I/O) before processing additional JavaScript
+               1. Ex, "Sync" versions of common module methods, ie, `readFileSync()`
+7. Explain the Node.js event loop
+   1. Allows Node.js to do non blocking I/O, even though JavaScript is single threaded, because the event loop offloads operations to the system kernel whenever possible.
+      1. Most modern kernels are multithreaded, & can handle several operations executing in the background. When one of those operations completes, the kernel tells Node.js so that the appropriate callback can be added to the queue in the poll phase of the event loop
+   2. [libuv](https://libuv.org/) is a C library that provides the event loop to JavaScript
+8. What are some common Event Loop misconceptions? [source](https://medium.com/the-node-js-collection/what-you-should-know-to-really-understand-the-node-js-event-loop-and-its-metrics-c4907b19da4c)
+   1. ~~the event loop runs in a separate thread than the user code~~
+      1. **Node.js has only one thread that executes JavaScript code** & this is the thread where the event loop is running
+   2. ~~Everything that's asynchronous is handled by a thread pool~~
+      1. libuv prefers to use operating system / 3rd party subsystem (ie, database) asynchronous interfaces
+      2. If there is no other option, libuv will handle asynchronous operations with the default thread pool of four (4) threads that it creates
+   3. ~~The event loop is something like a stack of queue~~
+      1. The event loop is a set of phases with specific tasks that are processed in round robin format
+
+##### The Node.js Event Loop
+
+1. General sequence
+   1. Node.js starts
+      1. initializes event loop
+      2. processes provided input script / drops into REPL
+         1. the script likely has synchronous code, & potentially:
+            1. async API calls - like `readFile()`
+            2. timers - like `setTimeout()` or `setImmediate()`
+            3. process.nextTick()
+      3. Begins processing event loop
+   2. Event loop phases (order of operations)
+      1. technically 7 or 8, but 6 are relevant for most developers
+
+![Node.js Event Loop diagram](./node.js-event-loop.png)
+
+
+  1. Each of these phases has a FIFO queue of callbacks to execute. In general, the event loop will run the code specific to that phase, then synchronously process the callbacks in the queue, until:
+     1. All callbacks in that phases' queue have been processed
+     2. The system-dependent maximum number of callbacks has been reached (callback limit)
+  2. Then, the event loop will move to the next phase, and so on
+  3. Any of these operations can schedule more operations
+     1. because the kernel queues new events into the poll phase, this phase in particular can run for a little while (relatively speaking) if there are long running callbacks
+
+1. Phases (overview)
+   1. timers - executes callbacks schedule by `setTimeout()` / `setInterval()`
+   2. pending callbacks - executes I/O callbacks deferred to the next loop iteration
+   3. idle, prepate - used internally by Node.js
+   4. poll
+      1. retrieve new I/O events
+      2. execute I/O related callbacks
+         1. except `setTimeout()`, `setInterval()`, `setImmediate()`, close callbacks
+      3. Node.js will block here when appropriate
+   5. check - execute callbacks schedule by `setImmediate()`
+   6. close callbacks - execute callbacks like `socket.on('close', ...)`
+
+2. Phases (details)
+   1. timers
+      1. specifies a minimum delay after which a callback may be executed
+   2. pending callbacks
+      1. some callbacks from certain system operations (ie, TCP connection receives ECONNREFUSED)
+   3. idle, prepare - only used internally by Node.js
+   4. poll
+      1. calculating how long it should block and poll for I/O, then
+      2. processing event in the poll queue
+      3. event loop enters poll phase & no timers are scheduled
+         1. if poll queue is empty
+            1. if `setImmediate()` timers are scheduled
+               1. end poll phase, go to check phase, execute `setImmediate()` callbacks
+            2. else
+               1. wait here for callbacks to be added to the queue, then execute them immediately
+         2. else
+            1. iterate over poll queue & synchronously execute callbacks there until
+               1. queue is empty
+               2. system-dependent callback limit has been reached
+      4. When the poll queue is empty, the event loop will check for timers whose thresholds have been reached
+         1. If there are any, go back to the timers phase to execute those callbacks
+   5. check
+      1. > "Generally, as code is executed, the event loop will hit the poll phase and will wait for incoming connections, requests, etc... However, if a callback has been scheduled with `setImmediate()` and the poll phase becomes idle, it will end & continue to the check phase, rather than waiting for poll events." [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#check)
+      2. `setImmediate()` is a special timer that runs in a separate phase of the event loop. Callbacks scheduled with `setImmediate()` will run immediately* after the poll phase completes (the poll queue is empty)
+   6. close callbacks
+      1. > "If a socket or handle is closed abruptly (ie, `socket.destroy()`), the 'close' event will be emitted in this phase. Otherwise it will be emitted by `process.nextTick()`." [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#close-callbacks)
+3. `setImmediate()` VS `setTimeout()`
+   1. If scheduled within an I/O cycle:
+      1. `setImmediate()` will always run immediately* after the current poll phase completes (after the poll queue is empty)
+      2. `setTimeout()` will run when the poll queue is empty, after the timer's threshold has been reached
+      3. Run this way, `setImmediate()` will always be executed before `setTimeout()`
+   2. If not scheduled within an I/O cycle (ie, in the main module)
+      1. Order is non-deterministic, because:
+      > "The timing will be bound by the performance of the process (which can be impacted by other applications running on the machine)" [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout)
+4. `process.nextTick()`
+   1. Technically not part of the event loop
+   > "The nextTickQueue will be processed after the current operation is completed, regardless of the current phase of the event loop". Operations here means the "transition from the underlying C/C++ handler, and handling the JavaScript that needs to be executed" [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#process-nexttick)
+
+   > "All callbacks passed to process.nextTick() will be resolved BEFORE the event loop continues." [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#process-nexttick)
+   1. Done this way because of a design philosophy where things should be async even when they don't strictly need to be.
+5. `process.nextTick()` VS `setImmediate()`
+   1. `process.nextTick()`
+      1. fires on the same phase, when the current operation completes
+   2. `setImmediate()`
+      1. fires on the following iteration / 'tick' of the event loop (ie, when the poll queue is empty)
+6. Why would you use `process.nextTick()`?
+   1. when some logic needs to happen immediately after 1 particular async task, BEFORE the event loop continues
+      1. handle errors
+      2. clean up unneeded resources
+      3. try a request again
+   2. > Run a callback "after the call stack has unwound but before the event loop continues" [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#why-use-process-nexttick)
