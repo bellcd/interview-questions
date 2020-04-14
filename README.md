@@ -10,6 +10,8 @@ A collection of interview questions I've been asked, to help you better prepare 
     - [General](#general)
     - [Fundamentals](#fundamentals)
     - [CSS](#css)
+    - [TypeScript](#typescript)
+    - [Angular](#angular)
     - [React](#react)
     - [Redux](#redux)
     - [Security](#security)
@@ -22,6 +24,7 @@ A collection of interview questions I've been asked, to help you better prepare 
     - [Browsers](#browsers)
     - [Accessibility (A11y)](#accessibility-a11y)
     - [Cross-Browser Compatibility](#cross-browser-compatibility)
+    - [API](#api)
     - [System Design](#system-design)
     - [Caching](#caching)
     - [Testing](#testing)
@@ -116,25 +119,28 @@ A collection of interview questions I've been asked, to help you better prepare 
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
 6. What's the difference between
-    1. a variable & a function
+    1. WET & DRY code?
+       1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code
+       2. WET is the opposite - inefficient code
+    2. a variable & a function
        1. TODO: finish
-    2. an id and a class in CSS?
+    3. an id and a class in CSS?
        1. TODO: finish
-    3. double `==` & triple `===` equality
+    4. double `==` & triple `===` equality
         1. double compares with type coercion on, triple with type coercion off
-    4. arrow function & 'normal' function
+    5. arrow function & 'normal' function
        1. normal function
           1. declared with the `function` keyword
           2. creates a new `this` context
        2. arrow function
           1. declared with arrow function syntax `() => {}`
           2. uses the `this` context of its containing scope
-    5. the functions `call` & `apply`. What are they used for?
+    6. the functions `call` & `apply`. What are they used for?
         1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
         2. `call` & `apply` are used to invoke another function, optionally with:
            1. a different `this` context
            2. additional arguments
-    6. `JSON.stringify()` & `toString()`
+    7. `JSON.stringify()` & `toString()`
         1. `toString()`
             1. method on `Object.prototype`
             2. can return different (sometimes surprising!) results for different values (ie, for an obj returns `[object Object]`)
@@ -142,15 +148,15 @@ A collection of interview questions I've been asked, to help you better prepare 
             1. method on `JSON`
             2. intended to serialize values into the JSON format for transmission or storage, so the results tend to be more predictable than `toString()`
                1. but doesn't serialize functions or undefined
-    7. dot & bracket notation in JavaScript objects?
+    8. dot & bracket notation in JavaScript objects?
        1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
           1. dot notation looks for literally every character after the dot
           2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
-    8. spread & rest operators
-       1. TODO: finish
-       2. can you use the spread operator to concatenate an array with another array?
-    9. the JavaScript callstack & the JavaScript memory heap?
-       1. TODO: finish
+    9.  spread & rest operators
+       2. TODO: finish
+       3. can you use the spread operator to concatenate an array with another array?
+    10. the JavaScript callstack & the JavaScript memory heap?
+       4. TODO: finish
 7. How does the internet work?
     - TODO: finish
 
@@ -182,6 +188,22 @@ A collection of interview questions I've been asked, to help you better prepare 
    2. TODO: finish
 10. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
     1. TODO: finish
+
+### TypeScript
+
+1. Explain
+   1. TypeScript at a high level
+      1. TypeScript compiles dow to normal JavaScript. Users would never interact with TypeScript
+      2. There's a `.ts` file for each project, generally at the organization or library level.
+         1. It defines what the types are for that project - and acts as a sort of filter or linter that the TypeScript files pass through in order to compile to plain JavaScript
+
+### Angular
+
+1. Explain:
+   1. Angular at a high level
+      1. A "batteries included" style framework (as opposed to React, for example), so it includes things like routing, state management, bundler, etc...
+      2. The syntax uses a JavaScript-inside-of-HTML approach (React's JSX uses an HTML-inside-of-JavaScript approach)
+      3. Two way data binding (React uses one way - top down - data binding)
 
 ### React
 
@@ -780,6 +802,32 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
    4. feature detection / polyfills if needed
    5. Use automated tools like Selenium to make this process easier
 
+### API
+
+1. Explain:
+   1. What is an API?
+      1. An Application Programming Interface, an API, in general is the contract between an appliation and something else it needs to talk to. For APIs on the web specifically, that generally means the contract between a web client & web server.
+      2. A neat comparison is that APIs are a bit similar to function signatures
+      3. On the web, an API will have:
+         1. endpoints - the path part of the URL.
+   2. What is REST?
+      1. Representational State Transfer - REST - is a pattern, that came about to try to bring some standardization to how APIs would be set up
+         1. The server will transfer to the client a representation of the state of the requested resource
+         2. That pattern sets down 6 constraints about the how the API - the contract - behaves
+            1. Uniform interface
+               1. includes resource locator
+               2. includes enough information so the client can modify the resource
+               3. Each request includes all the info the server needs to perform the request, & reach response contains all the info the client needs to understand the response.
+               4. Hypermedia as the engine of app state
+                  1. Most web pages adhere to his, but most web APIs do not
+            2. Client Server separation
+            3. Stateless
+            4. Layered system
+            5. Cacheable
+            6. Code-on-demand (optional)
+      2. Commonly, this involves sending an HTTP request (ie, with an HTTP method) to a particular endpoint specified by the server
+      3. The REST pattern is designed to imitate a file structure
+      4. [More Details](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
 
 ### System Design
 
