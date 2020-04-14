@@ -3,10 +3,10 @@
 A collection of interview questions I've been asked, to help you better prepare for software development interviews - specifically full stack JavaScript Software Engineer interviews.
 
 
-### Table Of Contents
+## Table Of Contents
 
 - [Interview Questions](#interview-questions)
-    - [Table Of Contents](#table-of-contents)
+  - [Table Of Contents](#table-of-contents)
     - [General](#general)
     - [Fundamentals](#fundamentals)
     - [CSS](#css)
@@ -25,59 +25,56 @@ A collection of interview questions I've been asked, to help you better prepare 
     - [System Design](#system-design)
     - [Caching](#caching)
     - [Personal](#personal)
+    - [Whiteboarding Questions](#whiteboarding-questions)
 
 ### General
 
 1. What interests you about this job in particular?
-   - ...
 2. How much experience in _____ do you have?
-   - My-Awesome-Bootcamp / Training covers in ____months what junior & even some mid level developers cover in ____months / years
+   1. My ______ experience covers in ____ months what junior & even some mid level developers cover in ____ months / years
 3. Have you ever worked as a web developer before? / Have you ever been paid to write software?
-   - If they’re looking for someone with “developer” in several previous job titles, that’s not me
-   - If they’re most concerned with simply getting the job done, that’s me
+   1. If they’re looking for someone with “developer” in several previous job titles, that’s not me
+   2. If they’re most concerned with simply getting the job done, that’s me
 4. What are the most important qualities in a developer? / What makes a good developer?
-   - base level of knowledge (HTML, CSS, JavaScript, DOM, how the internet works, front end frameworks / view libraries)
-   - clear technical communication
-   - open-mindedness
-   - teamwork
-   - persistence
-   - how you react to being confused
-   - managing the scribe VS conjurer tension
+   1. base level of knowledge (HTML, CSS, JavaScript, DOM, how the internet works, front end frameworks / view libraries)
+   2. clear technical communication
+   3. open-mindedness
+   4. teamwork
+   5. persistence
+   6. how you react to being confused
+   7. managing the scribe VS conjurer tension
 5. What are the 3 most important things to you in a job?
-   - The ability to work in in demand, marketable technologies
-   - mentorship from lead developers and management
-   - quantitative impact on projects with move-the-needle type business outcomes
-   - A team & management that set realistic goals
-   - competitive compensation package
+   1. The ability to work in in demand, marketable technologies
+   2. Mentorship from lead developers and management
+   3. Quantitative impact on projects with move-the-needle type business outcomes
+   4. A team & management that set realistic goals
+   - Competitive compensation package
 6. Tell me about yourself? / Who are you as a software engineer / Why do you do this? What do you like about development?
-   1. personal narrative ...
+   1. personal narrative
 7. What do you dislike about development?
    1. Being roadblocked w/deadlines. Teamwork aspect of web development is very important here.
 8. What do you think is the largest problem with the UI/UX that if solved, would increase our conversion rate from visitor to paying user?
-   1. ...
 9. What's something your previous manager did very well? Not so well?
-   1.  ...
 10. What are the responsibilities of a web developer?
-    1.  Building / maintaining web applications / websites
-        1.  front end is more concerned with presentation & user interface.
-        2.  back end is more concerned with storing, retrieving, & sending data to the front end.
+    1. Building / maintaining web applications / websites
+        1. front end is more concerned with presentation & user interface.
+        2. back end is more concerned with storing, retrieving, & sending data to the front end.
 11. How do you take into account SEO, maintainability, UX, performance, & security when you're building a web application?
-    1.  SEO is its own field, but web developers can be expected to know some basics (ie, avoid keyword stuffing, use something like [Yoast](https://yoast.com/) if possible)
-    2.  Software development is all about tradeoffs - maintainability, UX, performance, & security are all affected by decisions you make regarding those tradeoffs, ie:
-        1.  Maintainability - are you incurring technical debt by doing something a "fast" way instead of a cleaner, more best-practice aligned way?
-        2.  UX - it might be harder for you to code it a certain way, but perhaps that leads to a better UX
-        3.  Performance - there are established patterns of more & less efficient ways to accomplish things - ie, don't load a 2000 x 2000px image if all you're displaying is a thumbnail
-        4.  Security - same as above with the patterns, ie, don't submit email & passwords to a server as query strings, they should go in the body of HTTPS POST requests
+    1. SEO is its own field, but web developers can be expected to know some basics (ie, avoid keyword stuffing, use something like [Yoast](https://yoast.com/) if possible)
+    2. Software development is all about tradeoffs - maintainability, UX, performance, & security are all affected by decisions you make regarding those tradeoffs, ie:
+        1. Maintainability - are you incurring technical debt by doing something a "fast" way instead of a cleaner, more best-practice aligned way?
+        2. UX - it might be harder for you to code it a certain way, but perhaps that leads to a better UX
+        3. Performance - there are established patterns of more & less efficient ways to accomplish things - ie, don't load a 2000 x 2000px image if all you're displaying is a thumbnail
+        4. Security - same as above with the patterns, ie, don't submit email & passwords to a server as query strings, they should go in the body of HTTPS POST requests
 12. Describe your workflow when you create a web page or web app?
-    1.  Ideally, you want to start from a user story, identify key points of the UX, create a mockup of the design, get stakeholder feedback, build out a prototype, get stakeholder feedback again, add tests (or tests first if doing TDD), then add features as needed
+    1. Ideally, you want to start from a user story, identify key points of the UX, create a mockup of the design, get stakeholder feedback, build out a prototype, get stakeholder feedback again, add tests (or tests first if doing TDD), then add features as needed
 13. Tell me about a project that you're particularly proud of. What did you do that worked out well?
-    1.  ...
 14. What steps do you take to balance demanding client requirements?
-    1.  The biggest thing is setting realistic expectations upfront. ie, good-cheap-fast. You get 2 out of the 3. If the client insists on all three, you work with them underpinnings / efficiencies you can discover that enable you to adjust that triangle.
+    1. The biggest thing is setting realistic expectations upfront. ie, good-cheap-fast. You get 2 out of the 3. If the client insists on all three, you work with them underpinnings / efficiencies you can discover that enable you to adjust that triangle.
 15. How are you keeping up with the latest developments in web development?
-    1.  building side projects with new technologies
-    2.  medium / dev.to / etc ... articles
-    3.  YouTube channels / courses from prominent engineers
+    1. building side projects with new technologies
+    2. medium / dev.to / etc ... articles
+    3. YouTube channels / courses from prominent engineers
 
 ### Fundamentals
 
@@ -113,10 +110,10 @@ A collection of interview questions I've been asked, to help you better prepare 
    9. object & array destructuring
       1. TODO: finish
    10. Promises & async / await
-       1.  TODO: finish
+       1. TODO: finish
    11. Immutability in JavaScript
-      2.  Are objects & arrays in JavaScript immutable?
-      3.  How do you make something immutable in JavaScript?
+       1. Are objects & arrays in JavaScript immutable?
+       2. How do you make something immutable in JavaScript?
           1. TODO: finish
 6. What's the difference between
     1. a variable & a function
@@ -161,7 +158,7 @@ A collection of interview questions I've been asked, to help you better prepare 
    1. Cascading Style Sheets
 2. What's the difference between
     1. inline and inline-block?
-       1. inline-block can assign a height property TODO: link to stackoverflow answer
+       1. [inline-block can assign a height property](https://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block)
     2. CSS3 variables & SASS variables?
        1. TODO: finish this
 3. Explain:
@@ -179,10 +176,10 @@ A collection of interview questions I've been asked, to help you better prepare 
    1. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
 8. What values of the CSS display property can you remember offhand?
    1. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
-9.  What would you do to make a website responsive?
+9. What would you do to make a website responsive?
    2. TODO: finish
 10. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
-   3. TODO: finish
+    1. TODO: finish
 
 ### React
 
@@ -193,7 +190,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 3. Describe how state works in React, and in React with a Flux pattern (ie, Redux)
    1. TODO: finish
 4. Could you describe the React component lifecycle? When in the lifecycle would you bind to events?
-   1. ...
+   1. TODO: finish
 5. When do you prefer to use the Ref attribute?
    - When you need access to the underlying DOM node (filePicker, media playback, certain animations, working with certain mapping libraries like Leaflet)
 6. How do you decide between using a functional VS a class component?
@@ -216,7 +213,6 @@ A collection of interview questions I've been asked, to help you better prepare 
        1. TODO: finish
     3. Event handlers in React
        1. TODO: finish
-    4.
 
 ### Redux
 
@@ -295,17 +291,11 @@ A collection of interview questions I've been asked, to help you better prepare 
    - When a web page or web app executes user input directly in an SQL query
    - Don't directly execute uer input. ie, every piece of user input needs to pass input validation before that user input even gets to the part of your system that interacts with the database.
 5. Architect a scaled down Facebook app, with a feed display, and a posts display, many users, many posts. FOLLOWUP: How do you make it so anyone can get to it?
-   - ...
 6. When you have lots of traffic and the website is slow, how do you determine where the bottleneck is, and how would you fix it? FOLLOWUP: If the bottleneck if the server, how would you fix it?
-   - ...
 7. How do you securely transmit data?
-   - ...
 8. How do you get your React / Angular / Vue / etc... app onto the server?
-   - ...
 9. Tell me about a time you missed a deadline, what happened, and how did you fix it?
-   - ...
 10. Tell me about a time you've worked harder than you should've, and why you did it?
-    1. ...
 11. What browser do you use to develop and why?
     1. Chrome, dev tools features
 
@@ -342,7 +332,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 
 ### Project Management
 
-11. Agile VS Waterfall
+1. Agile VS Waterfall
     - Waterfall
       - Linear, sequential process flow
       - Scope is know, determined right at the beginning
@@ -517,7 +507,6 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       1. technically 7 or 8, but 6 are relevant for most developers
 
 ![Node.js Event Loop diagram](./node.js-event-loop.png)
-
 
   1. Each of these phases has a FIFO queue of callbacks to execute. In general, the event loop will run the code specific to that phase, then synchronously process the callbacks in the queue, until:
      1. All callbacks in that phases' queue have been processed
@@ -704,7 +693,6 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
            1. ie, complex UI features
    2. Some might say it's possible to go overboard with WAI-ARIA ... aim for balance
 
-
 ### Cross-Browser Compatibility
 
 1. Why is it important?
@@ -746,7 +734,6 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       2. What does REST try to imitate?
       3. Why is REST an imperfect solution?
 
-
 ### Caching
 
 1. How does caching work on a server layer?
@@ -780,3 +767,11 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
 15. Finish this sentence - I am a geek of _______
 16. What do you think of code you wrote 6 months ago?
 17. What's most important to you in a job / company?
+
+### Whiteboarding Questions
+
+1. Given 4 integer 8s, and 3 operators (+, -, *, /) in any combination / repetition - using that and (), make 56
+2. Given a fair coin and a coin with two heads, what is the probability of getting heads on the first coin, flipping that coin over, and it being tails?
+3. What is the probability of getting at least 3 heads when flipping 4 fair coins?
+4. Write a program to find the first repeating element in an array and display it in HTML (using a div or span tag)
+5. Write a program to display a string in reverse order and display it in HTML (using a div or span tag)
