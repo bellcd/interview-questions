@@ -2,7 +2,30 @@
 
 A collection of interview questions I've been asked, to help you better prepare for software development interviews - specifically full stack JavaScript Software Engineer interviews.
 
-### Real Interview Questions
+
+### Table Of Contents
+
+- [Interview Questions](#interview-questions)
+    - [Table Of Contents](#table-of-contents)
+    - [General](#general)
+    - [Fundamentals](#fundamentals)
+    - [CSS](#css)
+    - [React](#react)
+    - [Redux](#redux)
+    - [Security](#security)
+    - [Page Load Speed](#page-load-speed)
+    - [Workflow](#workflow)
+    - [Project Management](#project-management)
+    - [Functional Programming](#functional-programming)
+    - [Node.js](#nodejs)
+    - [The Node.js Event Loop](#the-nodejs-event-loop)
+    - [Browsers](#browsers)
+    - [Accessibility (A11y)](#accessibility-a11y)
+    - [Cross-Browser Compatibility](#cross-browser-compatibility)
+    - [System Design](#system-design)
+    - [Caching](#caching)
+
+### General
 
 1. What interests you about this job in particular?
    - ...
@@ -55,7 +78,112 @@ A collection of interview questions I've been asked, to help you better prepare 
     2.  medium / dev.to / etc ... articles
     3.  YouTube channels / courses from prominent engineers
 
-#### React
+### Fundamentals
+
+1. Describe general pros & cons to using JavaScript
+   1. TODO: finish
+2. How was the `this` problem handled before ES6?
+   1. TODO: finish
+3. How can you add more methods to an already existing class?
+   1. TODO: finish
+4. Do `[] == []` & `[] === []` return the same value? what value?
+   1. TODO: finish
+5. Explain:
+   1. scope
+      1. The areas of a running program where a lookup for a given variable can happen
+   2. var VS const VS let
+      1. three (3) ways of declaring variables in JavaScript
+      2. var - uses function scope
+      3. const & let
+         1. Both use block scope
+         2. const variables cannot be reassigned, let variables can
+   3. the keyword `new`
+      1. TODO: finish
+   4. prototype delegation
+      1. TODO: finish
+   5. hoisting. variable VS function hoisting differences?
+      1. TODO: finish
+   6. closure. How is closure helpful?
+      1. TODO: finish
+   7. event delegation
+      1. TODO: finish
+   8. object literal
+      1. TODO: finish
+   9. object & array destructuring
+      1. TODO: finish
+   10. Promises & async / await
+       1.  TODO: finish
+   11. Immutability in JavaScript
+      2.  Are objects & arrays in JavaScript immutable?
+      3.  How do you make something immutable in JavaScript?
+          1. TODO: finish
+6. What's the difference between
+    1. a variable & a function
+       1. TODO: finish
+    2. an id and a class in CSS?
+       1. TODO: finish
+    3. double `==` & triple `===` equality
+        1. double compares with type coercion on, triple with type coercion off
+    4. arrow function & 'normal' function
+       1. normal function
+          1. declared with the `function` keyword
+          2. creates a new `this` context
+       2. arrow function
+          1. declared with arrow function syntax `() => {}`
+          2. uses the `this` context of its containing scope
+    5. the functions `call` & `apply`. What are they used for?
+        1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
+        2. `call` & `apply` are used to invoke another function, optionally with:
+           1. a different `this` context
+           2. additional arguments
+    6. `JSON.stringify()` & `toString()`
+        1. `toString()`
+            1. method on `Object.prototype`
+            2. can return different (sometimes surprising!) results for different values (ie, for an obj returns `[object Object]`)
+        2. `JSON.stringify()`
+            1. method on `JSON`
+            2. intended to serialize values into the JSON format for transmission or storage, so the results tend to be more predictable than `toString()`
+               1. but doesn't serialize functions or undefined
+    7. dot & bracket notation in JavaScript objects?
+       1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
+          1. dot notation looks for literally every character after the dot
+          2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
+    8. spread & rest operators
+       1. TODO: finish
+       2. can you use the spread operator to concatenate an array with another array?
+7. How does the internet work?
+    - TODO: finish
+
+### CSS
+
+1. What does CSS stand for?
+   1. Cascading Style Sheets
+2. What's the difference between
+    1. inline and inline-block?
+       1. inline-block can assign a height property TODO: link to stackoverflow answer
+    2. CSS3 variables & SASS variables?
+       1. TODO: finish this
+3. Explain:
+   1. selectors
+      1. TODO: finish
+   2. specificity
+      1. TODO: finish
+4. What CSS would you use to turn a span into a button?
+    - TODO: finish
+5. Describe the cascading part of CSS
+    - TODO: finish
+6. What HTML & CSS would you use to make a horizontal nav bar?
+   1. TODO: finish
+7. What is a float?
+   1. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
+8. What values of the CSS display property can you remember offhand?
+   1. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+9.  What would you do to make a website responsive?
+   2. TODO: finish
+10. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
+   3. TODO: finish
+
+### React
 
 1. Is React a framework or a library?
    1. TODO: finish
@@ -141,12 +269,7 @@ A collection of interview questions I've been asked, to help you better prepare 
    2. Then, at some point later, the middleware calls the store's dispatch method, of the next middleware in the chain
    3. middleware functions can be chained
 
-
-TODO: where should this go??
-1.  What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
-   - Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
-
-#### Security
+### Security
 
 1. What happens when the username & password reach the server? How does the server verify if the password is correct?
    - The server has to be on & listening at the correct api endpoint & port, and have code set up to handle the type of incoming request - POST, in our case. The server code then reads the body of the POST request, parses the JSON, and continues processing the request with other server code.
@@ -185,7 +308,7 @@ TODO: where should this go??
 11. What browser do you use to develop and why?
     1. Chrome, dev tools features
 
-#### Page Load Speed
+### Page Load Speed
 
 1. What are things you can do to improve page load speed?
    - Run Google's Lightouse, it provides a laundry list of suggestions
@@ -211,117 +334,14 @@ TODO: where should this go??
        - Use CDNs
        - Have an efficient cache policy
 
-#### Workflow
+### Workflow
 
 1. What's the difference between a text editor & an IDE?
    1. A text editor is for more general purpose text editing (ie, Microsoft Word is a text editor), whereas an Integrated Development Environment has many more features specifically targeted at developers to make their workflows more efficient (ie, syntax highlighting, code completion, integrated terminals, etc...)
 
-#### Fundamentals
+### Project Management
 
-1. Describe general pros & cons to using JavaScript
-   1. TODO: finish
-2. How was the `this` problem handled before ES6?
-   1. TODO: finish
-3. How can you add more methods to an already existing class?
-   1. TODO: finish
-4. Do `[] == []` & `[] === []` return the same value? what value?
-   1. TODO: finish
-5. Explain:
-   1. scope
-      1. The areas of a running program where a lookup for a given variable can happen
-   2. var VS const VS let
-      1. three (3) ways of declaring variables in JavaScript
-      2. var - uses function scope
-      3. const & let
-         1. Both use block scope
-         2. const variables cannot be reassigned, let variables can
-   3. the keyword `new`
-      1. TODO: finish
-   4. prototype delegation
-      1. TODO: finish
-   5. hoisting. variable VS function hoisting differences?
-      1. TODO: finish
-   6. closure. How is closure helpful?
-      1. TODO: finish
-   7. event delegation
-      1. TODO: finish
-   8. object literal
-      1. TODO: finish
-   9. object & array destructuring
-      1. TODO: finish
-   10. Promises & async / await
-       1.  TODO: finish
-   11. Immutability in JavaScript
-      2.  Are objects & arrays in JavaScript immutable?
-      3.  How do you make something immutable in JavaScript?
-          1. TODO: finish
-6. What's the difference between
-    1. a variable & a function
-       1. TODO: finish
-    2. an id and a class in CSS?
-       1. TODO: finish
-    3. double `==` & triple `===` equality
-        1. double compares with type coercion on, triple with type coercion off
-    4. arrow function & 'normal' function
-       1. normal function
-          1. declared with the `function` keyword
-          2. creates a new `this` context
-       2. arrow function
-          1. declared with arrow function syntax `() => {}`
-          2. uses the `this` context of its containing scope
-    5. the functions `call` & `apply`. What are they used for?
-        1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
-        2. `call` & `apply` are used to invoke another function, optionally with:
-           1. a different `this` context
-           2. additional arguments
-    6. `JSON.stringify()` & `toString()`
-        1. `toString()`
-            1. method on `Object.prototype`
-            2. can return different (sometimes surprising!) results for different values (ie, for an obj returns `[object Object]`)
-        2. `JSON.stringify()`
-            1. method on `JSON`
-            2. intended to serialize values into the JSON format for transmission or storage, so the results tend to be more predictable than `toString()`
-               1. but doesn't serialize functions or undefined
-    7. dot & bracket notation in JavaScript objects?
-       1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
-          1. dot notation looks for literally every character after the dot
-          2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
-    8. spread & rest operators
-       1. TODO: finish
-       2. can you use the spread operator to concatenate an array with another array?
-7. How does the internet work?
-    - TODO: finish
-
-#### CSS
-
-1. What's the difference between
-    1. inline and inline-block?
-       1. inline-block can assign a height property TODO: link to stackoverflow answer
-    2. CSS3 variables & SASS variables?
-       1. TODO: finish this
-2. Explain:
-   1. selectors
-      1. TODO: finish
-   2. specificity
-      1. TODO: finish
-3. What CSS would you use to turn a span into a button?
-    - TODO: finish
-4. Describe the cascading part of CSS
-    - TODO: finish
-5. What HTML & CSS would you use to make a horizontal nav bar?
-   1. TODO: finish
-6. What is a float?
-   1. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
-7. What values of the CSS display property can you remember offhand?
-   1. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
-8. What would you do to make a website responsive?
-   1. TODO: finish
-9. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
-   1. TODO: finish
-
-#### Project Management
-
-1. Agile VS Waterfall
+11. Agile VS Waterfall
     - Waterfall
       - Linear, sequential process flow
       - Scope is know, determined right at the beginning
@@ -350,7 +370,7 @@ TODO: where should this go??
 3. You're leading a team that's behind on a deliverable. How do you motivate them to get it done?
     - TODO: finish
 
-#### Functional Programming
+### Functional Programming
 
 1. What is functional programming and what are its benefits?
    1. Style of programming - programming paradigm - where the focus is on each function & its inputs / outputs
@@ -416,7 +436,7 @@ add5(6) // 11
 
 There are libraries such as Immutable.js & Immer to make handling this easier in JavaScript
 
-#### Node.js
+### Node.js
 
 1. What is Node.js?
    1. an open source, cross platform runtime environment for executing JavaScript (ie, so that JavaScript can get exectued outside of web browsers)
@@ -481,7 +501,7 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
    3. ~~The event loop is something like a stack of queue~~
       1. The event loop is a set of phases with specific tasks that are processed in round robin format
 
-##### The Node.js Event Loop
+### The Node.js Event Loop
 
 1. General sequence
    1. Node.js starts
@@ -614,7 +634,8 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
   1. TODO: finish
 6. Describe the browser's general approach to parsing HTML
   1. TODO: finish
-7.
+1. What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
+  1. Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
 
 ### Accessibility (A11y)
 
