@@ -104,17 +104,19 @@ A collection of interview questions I've been asked, to help you better prepare 
       1. TODO: finish
    5. hoisting. variable VS function hoisting differences?
       1. TODO: finish
-   6. closure. How is closure helpful?
+   6. Creation VS Execution phase
       1. TODO: finish
-   7. event delegation
+   7. closure. How is closure helpful?
       1. TODO: finish
-   8. object literal
+   8. event delegation
       1. TODO: finish
-   9. object & array destructuring
-      1. TODO: finish
-   10. Promises & async / await
+   9. object literal
+      2. TODO: finish
+   10. object & array destructuring
        1. TODO: finish
-   11. Immutability in JavaScript
+   11. Callbacks VS Promises VS async / await
+       1. TODO: finish
+   12. Immutability in JavaScript
        1. Are objects & arrays in JavaScript immutable?
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
@@ -152,11 +154,11 @@ A collection of interview questions I've been asked, to help you better prepare 
        1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
           1. dot notation looks for literally every character after the dot
           2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
-    9.  spread & rest operators
-       2. TODO: finish
-       3. can you use the spread operator to concatenate an array with another array?
+    9. spread & rest operators
+       1. TODO: finish
+       2. can you use the spread operator to concatenate an array with another array?
     10. the JavaScript callstack & the JavaScript memory heap?
-       4. TODO: finish
+       3. TODO: finish
 7. How does the internet work?
     - TODO: finish
 
