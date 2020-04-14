@@ -26,6 +26,7 @@ A collection of interview questions I've been asked, to help you better prepare 
     - [Caching](#caching)
     - [Personal](#personal)
     - [Whiteboarding Questions](#whiteboarding-questions)
+    - [Trivia](#trivia)
 
 ### General
 
@@ -83,8 +84,6 @@ A collection of interview questions I've been asked, to help you better prepare 
 2. How was the `this` problem handled before ES6?
    1. TODO: finish
 3. How can you add more methods to an already existing class?
-   1. TODO: finish
-4. Do `[] == []` & `[] === []` return the same value? what value?
    1. TODO: finish
 5. Explain:
    1. scope
@@ -149,6 +148,8 @@ A collection of interview questions I've been asked, to help you better prepare 
     8. spread & rest operators
        1. TODO: finish
        2. can you use the spread operator to concatenate an array with another array?
+    9. the JavaScript callstack & the JavaScript memory heap?
+       1. TODO: finish
 7. How does the internet work?
     - TODO: finish
 
@@ -203,16 +204,75 @@ A collection of interview questions I've been asked, to help you better prepare 
    1. Normally controlled components, sometimes uncontrolled (with refs) if I need to customize the validity messages and want to use the DOM api for that.
 9. What's the difference between:
    1. A React component & A React element
-      1. TODO: finish
+      1. React Elements
+         1. plain JavaScript objects. You can think of them as descriptions of what you want to see on the screen. JSX tags `<i_an_an_html_tag>` OR `<I_Am_A_Component>` transpile to `React.createElement()` function calls when transpiled through Babel. React reads these objects and uses them to keep the DOM up to date.
+         2. React elements are immutable. Once created, you cannot change an element's attributes of children (ie, its props)
+      2. React Components
+         1. In a similar way to how JavaScript functions accept input(s) & return output(s) based on that input, React components accept an arbitrary input object (called props) & return ONE (1) React Element.
+         2. A big use case for React Components is the React Element they return can be customized based on the props that component receives. This vastly improves the reusability & modularity of the code.
    2. state and props in React
-      1. TODO: finish
+      1. state
+         1. private
+         2. fully controlled by the component
+         3. expected to change
+         4. state updates
+            1. done through `setState()` - NOT directly
+            2. merged into existing state
+            3. may be asynchronous
+      2. the component can choose to pass some of its state to components BELOW it in the tree, as props
+      3. props
+         1. immutable (props are read-only)
+   3. controlled VS uncontrolled components
+      1. controlled - the containing React conponent contains the state & defines the input element value
+      2. uncontrolled - the input element (for browsers, the actual DOM node) contains its own internal state
 10. Explain:
-    1. `React.Fragment`
+    1. Virtual DOM
        1. TODO: finish
-    2. JSX. Can you have JavaScript inside JSX? If so, how?
+    2. `React.Fragment`
+       1. Formally, React Fragments allow you to return a list of children from a component without adding extra nodes to the DOM
+       2. ie, you can still return only one thing from a component (as React requires), in cases where if that one thing was a `<div>`, it would cause invalid / excessive HTML
+    3. Strict mode in React
        1. TODO: finish
-    3. Event handlers in React
+    4. JSX. Can you have JavaScript inside JSX? If so, how?
        1. TODO: finish
+    5. Event handlers in React
+       1. TODO: finish
+    6. refs
+       1. refs are a way to get references to:
+          1. the underlying DOM node (for browsers)
+          2. mounted instance of the component
+       2. refs are used when you need that direct reference (ex, for accessing state if it lives in the DOM node)
+          1. don't user them if you can avoid it (React pattern of lifting state up & passing props is generally preferred)
+          2. use cases:
+             1. managing focus, text selection, or media playback
+             2. triggering imperative animation
+             3. integrating with existing or already deployed third party DOM libraries
+          3. `React.createRef()` or callback refs are preferred, instead of string refs & `ReactDOM.findDOMNode()`
+    7. forwardingRefs
+       1. TODO: finish
+    8. Context in React
+       1. Context in React is way to pass data through the component tree, without having to explicitly pass that data at each level (ie, the component that needs the data could be 50 levels down from where the data lives, manually wiring that data through 50 intermediate components leads to very WET code)
+       2. Before using Context, consider if using component composition might be simpler (ie, defining the component that needs the data in the component where the data lives as state, then passing that whole component as a prop - instead of passing each piece of data as a separate prop)
+       3. Which solution is better depends heavily on the number of components, props, nesting, etc...
+       4. Common use cases for Context (instead of component composition) are
+          1. themes
+          2. current locale
+          3. data cache
+       5. React Context is an object
+
+         ```JavaScript
+         const MyContext = React.createContext(defaultValue);
+         // you wrap any components you want to be able to access context inside
+         <MyContext.Provider value={the_value_components_will_be_able_to_access} />
+         // descendent components are also able to acess that value
+         ```
+
+       6. In class components:
+          1. You assign `MyClass.contextType` to the context object you created earlier
+          2. This makes the value defined in the nearest ancestor Context Provider available in this class at `this.context`
+       7. In function components:
+          1. You use `<MyContext.Consumer>` with a child of a function that accepts the value from the Context. That function returns a React Element
+       8. Using the API, you can only consume a single Context. To consume more than one, either next several `<MyContext.Provider>`s, or consider using Render Props.
 
 ### Redux
 
@@ -581,7 +641,10 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
 
 ### Browsers
 
-1. What's the difference between:
+1. Expain:
+   1. Document Object Model VS CSS Object Model VS Render Tree VS Critical Render Path
+      1. TODO: finish
+2. What's the difference between:
    1. AJAX & page requests?
        1. AJAX (XMLHttp) requests
           1. made by JavaScript, & only JavaScript
@@ -608,24 +671,29 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       1. TCP specifies that the client tell the server info about the message (ie, what / how many packets, etc...) it's sending, so the server can be assured it received all the packets of a message.
          1. **TCP is slower than UDP**
       2. UDP simply sends packets, without metadata about those packets. Use case is really games, where performance (especially of the system as a whole) is much more critical than dropping ceratin packets.
-2. Does a 2xx status code always mean the request was completely successful?
+   5. Parser Blocking VS Render Blocking
+      1. TODO: finish
+3. Does a 2xx status code always mean the request was completely successful?
    1. 200-something status codes do indeed mean success, but not necessarily complete & utter success.
       1. 206 status means partial success (for example, perhaps 14 of your 15 database queries were successful)
-3. Do subdomains have unique IP addresses?
+4. Do subdomains have unique IP addresses?
    1. yes
-4. How many unique requests can be outstanding to a given IP address?
+5. Are `<style>` tags parser blocking or render blocking?
+   1. **`<style>` tags are render blocking** because the engine doesn't - and can't - know what the CSS object model, and thus the render tree, will look like until ALL the css stylesheets have been downloaded & parsed.
+   2. **`<style>` tags are NOT parser blocking** because the engine will continue to download & parse other files.
+6. How many unique requests can be outstanding to a given IP address?
    1. 20
       1. for example, a page can simultaneously have 20 open requests each to:
          1. blog.fb.com
          2. fb.com
          3. www.fb.com
          4. etc...
-5. Is there a general ordering for script & link tags in the head of an HTML document? Why? Any exceptions?
-  1. TODO: finish
-6. Describe the browser's general approach to parsing HTML
-  1. TODO: finish
-1. What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
-  1. Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
+7. Is there a general ordering for script & link tags in the head of an HTML document? Why? Any exceptions?
+   1. TODO: finish
+8. Describe the browser's general approach to parsing HTML
+   1. TODO: finish
+9. What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
+   1. Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
 
 ### Accessibility (A11y)
 
@@ -775,3 +843,16 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
 3. What is the probability of getting at least 3 heads when flipping 4 fair coins?
 4. Write a program to find the first repeating element in an array and display it in HTML (using a div or span tag)
 5. Write a program to display a string in reverse order and display it in HTML (using a div or span tag)
+
+### Trivia
+
+1. Do `[] == 0` & `[] === 0` return the same value? why? what value(s)?
+   ```JavaScript
+   [] == 0 // true, because [] >>> "" >>> 0, then compared with 0
+   [] === 0 // false, because no coercion takes place, so [] compared with 0
+   ```
+   1. JavaScript type coercion can have complicated rules / sequences that are not always immediately intuitive, so be careful!
+   2. [high level overview](https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/)
+   3. [stackoverflow example](https://stackoverflow.com/questions/5491605/empty-arrays-seem-to-equal-true-and-false-at-the-same-time)
+   4. [visual reference](https://dorey.github.io/JavaScript-Equality-Table/)
+   5. [spec](https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3)
