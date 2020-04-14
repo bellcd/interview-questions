@@ -2,10 +2,25 @@
 
 A collection of interview questions I've been asked, to help you better prepare for software development interviews - specifically full stack JavaScript Software Engineer interviews.
 
+## FAQ
+
+- Can I share / link this with _____?
+  - Absolutely!
+- I see something that's inaccurate / misleading / incomplete / etc...
+  - Super! That means I get to learn something new. Submit a PR, please.
+  - Also, this is very much a work-in-progress, so it might get addressed soon
+- I'm excited! I'm going to read / re-read all of this info until I have it all memorized!
+  - Maybe don't do that. It's probably counter-productive to actual learning. Try [generating the answers yourself](https://www.youtube.com/watch?v=O96fE1E-rf8&vl=en), then [doing simple recall](https://www.apa.org/science/about/psa/2016/06/learning-memory)
+- There's too much here!
+  - Yes, it's a lot. What works for me is *concentrating on a small chunk* of knowledge, then [building something that requires me to use that chunk](https://bellcd.github.io/)
+- I have a suggestion / comment / concern / etc...
+  - [email me](mailto:ChristianDibalaBell@gmail.com)
+
 
 ## Table Of Contents
 
 - [Interview Questions](#interview-questions)
+  - [FAQ](#faq)
   - [Table Of Contents](#table-of-contents)
     - [General](#general)
     - [Fundamentals](#fundamentals)
