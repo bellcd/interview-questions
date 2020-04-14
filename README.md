@@ -56,19 +56,42 @@ A collection of interview questions I've been asked, to help you better prepare 
     3.  YouTube channels / courses from prominent engineers
 
 #### React
-1. Could you describe the React component lifecycle? When in the lifecycle would you bind to events?
-   - ...
-2. When do you prefer to use the Ref attribute?
+
+1. Is React a framework or a library?
+   1. TODO: finish
+2. Describe how client-side routing is handled in React?
+   1. TODO: finish
+3. Describe how state works in React, and in React with a Flux pattern (ie, Redux)
+   1. TODO: finish
+4. Could you describe the React component lifecycle? When in the lifecycle would you bind to events?
+   1. ...
+5. When do you prefer to use the Ref attribute?
    - When you need access to the underlying DOM node (filePicker, media playback, certain animations, working with certain mapping libraries like Leaflet)
-3. How do you decide between using a functional VS a class component?
+6. How do you decide between using a functional VS a class component?
    - Two big reasons to use Class Components are
      - you need state
      - you need to use lifecycle methods, like componentDidMount() or componentDidUpdate()
-4. What's the difference between a pure component and a regular component?
+7. What's the difference between a pure component and a regular component?
    - TODO: complete
-5. What sort of patterns do you employ when developing forms in React?
-   - Normally controlled components, sometimes uncontrolled (with refs) if I need to customize the validity messages and want to use the DOM api for that.
-6. What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
+8. What sort of patterns do you employ when developing forms in React?
+   1. Normally controlled components, sometimes uncontrolled (with refs) if I need to customize the validity messages and want to use the DOM api for that.
+9. What's the difference between:
+   1. A React component & A React element
+      1. TODO: finish
+   2. state and props in React
+      1. TODO: finish
+10. Explain:
+    1. `React.Fragment`
+       1. TODO: finish
+    2. JSX. Can you have JavaScript inside JSX? If so, how?
+       1. TODO: finish
+    3. Event handlers in React
+       1. TODO: finish
+    4.
+
+
+TODO: where should this go??
+1.  What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
    - Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
 
 #### Security
@@ -143,7 +166,15 @@ A collection of interview questions I've been asked, to help you better prepare 
 
 #### Fundamentals
 
-1. Explain:
+1. Describe general pros & cons to using JavaScript
+   1. TODO: finish
+2. How was the `this` problem handled before ES6?
+   1. TODO: finish
+3. How can you add more methods to an already existing class?
+   1. TODO: finish
+4. Do `[] == []` & `[] === []` return the same value? what value?
+   1. TODO: finish
+5. Explain:
    1. scope
       1. The areas of a running program where a lookup for a given variable can happen
    2. var VS const VS let
@@ -152,25 +183,46 @@ A collection of interview questions I've been asked, to help you better prepare 
       3. const & let
          1. Both use block scope
          2. const variables cannot be reassigned, let variables can
-2. What's the difference between
-    1. TODO: finish
-    2. a variable & a function
-    3. an id and a class in CSS?
-    4. double (==) & triple (===) equality
+   3. the keyword `new`
+      1. TODO: finish
+   4. prototype delegation
+      1. TODO: finish
+   5. hoisting. variable VS function hoisting differences?
+      1. TODO: finish
+   6. closure. How is closure helpful?
+      1. TODO: finish
+   7. event delegation
+      1. TODO: finish
+   8. object literal
+      1. TODO: finish
+   9. object & array destructuring
+      1. TODO: finish
+   10. Promises & async / await
+       1.  TODO: finish
+   11. Immutability in JavaScript
+      2.  Are objects & arrays in JavaScript immutable?
+      3.  How do you make something immutable in JavaScript?
+          1. TODO: finish
+6. What's the difference between
+    1. a variable & a function
+       1. TODO: finish
+    2. an id and a class in CSS?
+       1. TODO: finish
+    3. double `==` & triple `===` equality
         1. double compares with type coercion on, triple with type coercion off
-    5. arrow function & 'normal' function
+    4. arrow function & 'normal' function
        1. normal function
           1. declared with the `function` keyword
           2. creates a new `this` context
        2. arrow function
           1. declared with arrow function syntax `() => {}`
           2. uses the `this` context of its containing scope
-    6. the functions `call` & `apply`. What are they used for?
+    5. the functions `call` & `apply`. What are they used for?
         1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
         2. `call` & `apply` are used to invoke another function, optionally with:
            1. a different `this` context
            2. additional arguments
-    7. `JSON.stringify()` & `toString()`
+    6. `JSON.stringify()` & `toString()`
         1. `toString()`
             1. method on `Object.prototype`
             2. can return different (sometimes surprising!) results for different values (ie, for an obj returns `[object Object]`)
@@ -178,11 +230,14 @@ A collection of interview questions I've been asked, to help you better prepare 
             1. method on `JSON`
             2. intended to serialize values into the JSON format for transmission or storage, so the results tend to be more predictable than `toString()`
                1. but doesn't serialize functions or undefined
-    8. dot & bracket notation in JavaScript objects?
+    7. dot & bracket notation in JavaScript objects?
        1. both syntaxes instruct the interpreter to look for a property on that object with a particular sequence of characters
           1. dot notation looks for literally every character after the dot
           2. bracket notation causes what's inside the bracket to get evaluated, & **that evaluated expression is what's searched for**
-3. How does the internet work?
+    8. spread & rest operators
+       1. TODO: finish
+       2. can you use the spread operator to concatenate an array with another array?
+7. How does the internet work?
     - TODO: finish
 
 #### CSS
@@ -192,16 +247,25 @@ A collection of interview questions I've been asked, to help you better prepare 
        1. inline-block can assign a height property TODO: link to stackoverflow answer
     2. CSS3 variables & SASS variables?
        1. TODO: finish this
-2. What CSS would you use to turn a span into a button?
+2. Explain:
+   1. selectors
+      1. TODO: finish
+   2. specificity
+      1. TODO: finish
+3. What CSS would you use to turn a span into a button?
     - TODO: finish
-3. Describe the cascading part of CSS
+4. Describe the cascading part of CSS
     - TODO: finish
-4. What HTML & CSS would you use to make a horizontal nav bar?
+5. What HTML & CSS would you use to make a horizontal nav bar?
    1. TODO: finish
-5. What is a float?
+6. What is a float?
    1. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it
-6. What values of the CSS display property can you remember offhand?
+7. What values of the CSS display property can you remember offhand?
    1. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+8. What would you do to make a website responsive?
+   1. TODO: finish
+9. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
+   1. TODO: finish
 
 #### Project Management
 
@@ -453,11 +517,10 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       3. try a request again
    2. > Run a callback "after the call stack has unwound but before the event loop continues" [source](https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick/#why-use-process-nexttick)
 
-
 ### Browsers
 
 1. What's the difference between:
-   1.  AJAX & page requests?
+   1. AJAX & page requests?
        1. AJAX (XMLHttp) requests
           1. made by JavaScript, & only JavaScript
           2. sent to the server AFTER the page has loaded
@@ -483,7 +546,7 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       1. TCP specifies that the client tell the server info about the message (ie, what / how many packets, etc...) it's sending, so the server can be assured it received all the packets of a message.
          1. **TCP is slower than UDP**
       2. UDP simply sends packets, without metadata about those packets. Use case is really games, where performance (especially of the system as a whole) is much more critical than dropping ceratin packets.
-2. Does a 2xx status code always mean the request was completely succeessful?
+2. Does a 2xx status code always mean the request was completely successful?
    1. 200-something status codes do indeed mean success, but not necessarily complete & utter success.
       1. 206 status means partial success (for example, perhaps 14 of your 15 database queries were successful)
 3. Do subdomains have unique IP addresses?
@@ -496,8 +559,10 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
          3. www.fb.com
          4. etc...
 5. Is there a general ordering for script & link tags in the head of an HTML document? Why? Any exceptions?
-   1. TODO: finish
-
+  1. TODO: finish
+6. Describe the browser's general approach to parsing HTML
+  1. TODO: finish
+7.
 
 ### Accessibility (A11y)
 
@@ -593,7 +658,7 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
          1. vertical - bigger and / or better boxes (ie, more processors / more memory)
          2. horizontal - more boxes
       2. which option is better is highly situation specific
-   2. forward proxy (or just proxy) & reverse proxy
+   2. forward proxy (proxy) & reverse proxy
       1. there's always a funneling involved, the key difference is whether it's inbound or outbound traffic being funneled.
       2. Proxy (forward proxy)
          1. lots of devices on an internal network routing their **OUTGOING traffic to 1 box, 1 IP address,** that forwards those requests towards their destination
@@ -601,3 +666,18 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       3. Reverse Proxy
          1. **1 box, 1 IP address, that accepts INCOMING traffic** from the internet, & distributes those requests to an internal intranet
          2. Load balancers that distribute incoming requests to many server instances are a specific type of reverse proxy
+2. Explain:
+   1. REST
+      1. TODO: finish
+      2. What does REST try to imitate?
+      3. Why is REST an imperfect solution?
+
+
+### Caching
+
+1. How does caching work on a server layer?
+   1. storing some data in memory, RAM, commonly in a key-value store like redis or memcache, so that it's faster to access than having to read that same data from disk through a database
+2. What are several caching invalidation strategies?
+   1. time based (10s, 60s, 30days, etc..)
+   2. least recently used - LRU - (ie, evict the video that was accessed the longest time ago)
+   3. least frequently used - LFU - (ie, evict the video that accessed the least)
