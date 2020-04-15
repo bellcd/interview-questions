@@ -114,7 +114,11 @@ A collection of interview questions I've been asked, to help you better prepare 
          1. Both use block scope
          2. const variables cannot be reassigned, let variables can
    3. the keyword `new`
-      1. TODO: finish
+      1. JavaScript is not an object oriented language (OOP), nor is it a functional programming language - JavaScript is a multi-paradigm language. JavaScript does has a `new` keyword that creates results that look like what the `new` keyword does in many OOP languages; however, the details of what actually happens are different.
+         1. *JavaScript does NOT have "constructor" functions*. When `new` is used in front of a function invocation, the interpreter does several special things. (So you could say JavaScript has "construction invocations" of a function)
+            1. Creates a new object in memory
+            2. Assigns the `this` context of the construction invocation of that function to the new object
+            3. If no explicit return is declared in the function, returns that newly created object
    4. prototype delegation
       1. TODO: finish
    5. hoisting. variable VS function hoisting differences?
@@ -126,7 +130,7 @@ A collection of interview questions I've been asked, to help you better prepare 
    8. event delegation
       1. TODO: finish
    9. object literal
-      2. TODO: finish
+      1. TODO: finish
    10. object & array destructuring
        1. TODO: finish
    11. Callbacks VS Promises VS async / await
