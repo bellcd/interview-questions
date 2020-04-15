@@ -120,7 +120,17 @@ A collection of interview questions I've been asked, to help you better prepare 
             2. Assigns the `this` context of the construction invocation of that function to the new object
             3. If no explicit return is declared in the function, returns that newly created object
    4. prototype delegation
-      1. TODO: finish
+      1. Because JavaScript is multi-paradigm, it does not do classing in the same way that OOP languages handle classing (even with the ES6 `class` keyword!)
+      2. Instead, JavaScript does something called prototype delegation.
+         1. When you tell the interpreter to search for a property (or method, if it's a function) on an object (in JavaScript, arrays and functions are types of objects), the interpreter first looks directly on that object.
+            1. If the lookup succeeds, it continues with your code
+            2. Else, the interpreter delegates the lookup to the next higher object in the prototype chain
+            3. This process repeats until
+               1. the lookup is successful
+               2. we get to the highest prototype object, which itself delegates lookups to the value `null`, at which point the interpreter returns `undefined`.
+         2. Every object in JavaScript has a Prototype Chain to which it delegates failed property lookups.
+            1. In many browsers (ie, Chrome) the prototype object of a given object is available in the console at the property `__proto__`
+            2. Because Arrays and Functions are types of Objects, the object at the `__proto__` property of an Array, for example, will itself have an object at its `__proto__` property.
    5. hoisting. variable VS function hoisting differences?
       1. TODO: finish
    6. Creation VS Execution phase
