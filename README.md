@@ -895,7 +895,13 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
 
 1. Explain:
    1. TDD
-2. What is the difference between:
+      1. TODO: finish
+   2. AAA
+      1. AAA a pattern for organizing your test code
+         1. Arrange - setup for that particular test
+         2. Act - triggering event necessary for the test
+         3. Assert - making your assertions on what conditions should exist
+2. What's the difference between:
    1. BDD & TDD
       1. TODO: finish
    2. Unit VS Integration VS End to End
@@ -935,7 +941,9 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
    2. test data files
       1. Pros - single source of truth for the test data, easier to manage as the codebase grows
       2. Cons - not as easy / fast to debug
-
+5. Is it always better to test implementation OR behavior?
+   1. Both have their place, but in general you probably want to lean more towards testing behavior (even in unit tests!) rather than implementation. This leads to more resilient tests (ie, they're less likely to break after every tiny refactor)
+   2. Testing implementation can become necessary when there is complex logic / many conditionals / etc...
 
 ### Personal
 
