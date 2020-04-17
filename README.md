@@ -23,6 +23,7 @@ A collection of interview questions I've been asked, to help you better prepare 
   - [FAQ](#faq)
   - [Table Of Contents](#table-of-contents)
     - [General](#general)
+    - [Workflow](#workflow)
     - [Fundamentals](#fundamentals)
     - [CSS](#css)
     - [TypeScript](#typescript)
@@ -31,7 +32,6 @@ A collection of interview questions I've been asked, to help you better prepare 
     - [Redux](#redux)
     - [Security](#security)
     - [Page Load Speed](#page-load-speed)
-    - [Workflow](#workflow)
     - [Project Management](#project-management)
     - [Functional Programming](#functional-programming)
     - [Node.js](#nodejs)
@@ -95,6 +95,15 @@ A collection of interview questions I've been asked, to help you better prepare 
     1. building side projects with new technologies
     2. medium / dev.to / etc ... articles
     3. YouTube channels / courses from prominent engineers
+ 1. Tell me about something exciting that you've worked on recently.
+ 2. What's your favorite bug?
+ 3. Tell me about an interesting challenge you encountered recently & how you handled it?
+
+### Workflow
+
+1. What's the difference between a text editor & an IDE?
+   1. A text editor is for more general purpose text editing (ie, Microsoft Word is a text editor), whereas an Integrated Development Environment has many more features specifically targeted at developers to make their workflows more efficient (ie, syntax highlighting, code completion, integrated terminals, etc...)
+2. A user reported an error in _______. How do we address it?
 
 ### Fundamentals
 
@@ -438,11 +447,6 @@ A collection of interview questions I've been asked, to help you better prepare 
      - [Caching](https://web.dev/uses-long-cache-ttl/)
        - Use CDNs
        - Have an efficient cache policy
-
-### Workflow
-
-1. What's the difference between a text editor & an IDE?
-   1. A text editor is for more general purpose text editing (ie, Microsoft Word is a text editor), whereas an Integrated Development Environment has many more features specifically targeted at developers to make their workflows more efficient (ie, syntax highlighting, code completion, integrated terminals, etc...)
 
 ### Project Management
 
