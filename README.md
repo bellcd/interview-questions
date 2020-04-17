@@ -158,6 +158,12 @@ A collection of interview questions I've been asked, to help you better prepare 
        1. Are objects & arrays in JavaScript immutable?
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
+   13. Syntactic Sugar, and give at least 1 example
+       1. When the language provides a different (also simpler / cleaner / easier to understand / shorter / "better" / etc...) syntax for **accomplishing the exact same task**
+          1. `async` & `await`, so you don't have to work with `.then` blocks
+          2. the `class` keyword in JavaScript
+          3. the spread & rest operators
+          4. object & array destructuring
 6. What's the difference between
     1. WET & DRY code?
        1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code
