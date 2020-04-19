@@ -404,8 +404,8 @@ A collection of interview questions I've been asked, to help you better prepare 
        - Always return the same output for the same input
        - It's not possible to go backwards (ie, take a hash and create the plain text password), even if you know the details of the particular hashing function used.
        - Every input maps to one output (not technically true at the margins, but for all practicality)
-     - Some company systems also use a salt, which is a random string (some common ones are combinations of date, IP address, type of web browser, etc...), and combine that with your user supplied password, to create the hashed password. This approach is more secure because then you need something the end user has (password) + something the company has (salt) to generate the correct hashed password.
-   - So the server code runs your password - @myFluffyDog42 - (combined with your salt from the database, if they user them) through their hashing function, and compares the hashed password that was just generated with the hashed password retrieved from the database. If they match, the user is then authenticated.
+     - Some company systems also use a salt
+   - So the server code runs your password - @myFluffyDog42 - (combined with your salt from the database, if they use them) through their hashing function, and compares the hashed password that was just generated with the hashed password retrieved from the database. If they match, the user is then authenticated.
 2. How can a user stay logged in, so they don't need to & password?
    - The web app / website can set a cookie on the end user's web browser. Cookies are:
      - small pieces of data
@@ -427,6 +427,22 @@ A collection of interview questions I've been asked, to help you better prepare 
 10. Tell me about a time you've worked harder than you should've, and why you did it?
 11. What browser do you use to develop and why?
     1. Chrome, dev tools features
+12. Explain
+    1. JSON Web Tokens
+       1. JSON objects encoded as a string
+       2. specifies a secure approach for two parties to make claims (ie, the client claiming this person is already logged in, and they have role: user), and verify that those claims are accurate
+       3. [details](https://jwt.io/)
+    2. Hashing
+       1. ONE WAY operation that changes something (ie, your plain text password) into something else (ie, a hashed password). Even if you know the particular hashing algorithm used & the hashed value, you cannot recover the original value.
+    3. Salt
+       1. A random string (some common ones are combinations of date, IP address, type of web browser, etc...), and combine that with your user supplied password, to create the hashed password. This approach is more secure because then you need something the end user has (password) + something the company has (salt) to generate the correct hashed password.
+13. What's the difference between
+    1. Authentication VS Authorization
+       1. Authentication is the process of verifying that a given user is who they say they are. ie, signing in to a system with a username and password is authentication
+       2. Authorization is the decision making process that determines whether a given user should be able to perform a particular operation. ie, once you're signed in, should you be able to modify a particular resource?
+14. Where is an appropriate place to store secrets (ie, private keys) about your application?
+    1. environment variables
+    2. Secrets like this should NEVER be included in the codebase (and should be excluded from source control, like git / github)
 
 ### Page Load Speed
 
