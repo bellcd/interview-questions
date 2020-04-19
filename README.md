@@ -436,13 +436,22 @@ A collection of interview questions I've been asked, to help you better prepare 
        1. ONE WAY operation that changes something (ie, your plain text password) into something else (ie, a hashed password). Even if you know the particular hashing algorithm used & the hashed value, you cannot recover the original value.
     3. Salt
        1. A random string (some common ones are combinations of date, IP address, type of web browser, etc...), and combine that with your user supplied password, to create the hashed password. This approach is more secure because then you need something the end user has (password) + something the company has (salt) to generate the correct hashed password.
-13. What's the difference between
+13. What's the difference between?
     1. Authentication VS Authorization
        1. Authentication is the process of verifying that a given user is who they say they are. ie, signing in to a system with a username and password is authentication
        2. Authorization is the decision making process that determines whether a given user should be able to perform a particular operation. ie, once you're signed in, should you be able to modify a particular resource?
+    2. 401 VS 403 error codes
+       1. 401 is an Authentication error - ie, "I don't know who you are yet" - so please try again
+       2. 403 is an Authorization error - ie, "You're not allowed here"
+       3. [details](https://stackoverflow.com/questions/3297048/403-forbidden-vs-401-unauthorized-http-responses)
 14. Where is an appropriate place to store secrets (ie, private keys) about your application?
     1. environment variables
     2. Secrets like this should NEVER be included in the codebase (and should be excluded from source control, like git / github)
+15. Should authorization be implemented on every route in your API? why / not? how?
+    1. no - certain routes might be public by design
+    2. setting up the authorization as middleware
+16. Can you safely store JSON Web Tokens in a database? how?
+    1. TODO: finish
 
 ### Page Load Speed
 
@@ -885,6 +894,8 @@ There are libraries such as Immutable.js & Immer to make handling this easier in
       2. Commonly, this involves sending an HTTP request (ie, with an HTTP method) to a particular endpoint specified by the server
       3. The REST pattern is designed to imitate a file structure
       4. [More Details](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f)
+2. Give an example of when you would want to encapsulate logic in a Mongoose Model
+   1. Your model is of the users in your application, and you want to specify what properties of any given user get added to a JSON web token. This logic would best be situated inside the Mongoose Model, where it has access to those properties.
 
 ### System Design
 
