@@ -342,6 +342,31 @@ A collection of interview questions I've been asked, to help you better prepare 
        7. In function components:
           1. You use `<MyContext.Consumer>` with a child of a function that accepts the value from the Context. That function returns a React Element
        8. Using the API, you can only consume a single Context. To consume more than one, either next several `<MyContext.Provider>`s, or consider using Render Props.
+11. What are React Hooks?
+    1. [An approach to accessing many useful React features that formerly required classes](https://reactjs.org/docs/hooks-intro.html) (state, lifecycle methods, etc...)
+12. What are the main problems that React Hooks aim to solve?
+    1. Classes in JavaScript are potentially difficult for developers to work with & [allow coding certain patterns that prevent many performance optimizations](https://reactjs.org/docs/hooks-intro.html#classes-confuse-both-people-and-machines).
+    2. Using lifecycle methods enforces splitting related logic based on when-that-logic-needs-to-run. [Hooks allow for other groupings of related logic](https://reactjs.org/docs/hooks-intro.html#complex-components-become-hard-to-understand).
+    3. Hooks allow you to [share stateful logic between components](https://reactjs.org/docs/hooks-intro.html#its-hard-to-reuse-stateful-logic-between-components) (sharing the LOGIC, not the state. The state remains unique.)
+13. What are the rules of using React Hooks?
+    1. TODO: finish
+14. Can you use React Hooks inside classes? why? / why not?
+    1. TODO: finish
+15. Do React Hooks have any naming conventions? why? / why not?
+    1. TODO: finish
+16. How would you create & update state with a React Hook?
+    1. invoke the `useState()` method with the initial state you want to store
+    2. it will return an array, with
+       1. 1st element - the current value of that state
+       2. 2nd element - function to update that state value
+       3. the convention is to use [array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to create the local variables that point to the actual state value & associated updater returned from `useState`. Naming these variables is up to the developer.
+    3. These values - the state & its associated updater function are LOCAL to the component, so they can be passed to event handlers, for instance, without any fuss (ie, no `bind()` calls necessary)
+    4. Updating that state is as simple as invoking the updater function with the new value
+17. Describe at least two (2) approaches for storing multiple state values with `useState()`
+    1. Store all the values in a wrapper object, and have that wrapper object be what gets passed to `useState`
+    2. React supports multiple calls to `useState` in the same component, each referring to a different slice of state
+18. How is `useState()` different from `this.setState()`?
+    1. TODO: finish
 
 ### Redux
 
