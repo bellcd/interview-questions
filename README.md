@@ -367,6 +367,28 @@ A collection of interview questions I've been asked, to help you better prepare 
     2. React supports multiple calls to `useState` in the same component, each referring to a different slice of state
 18. How is `useState()` different from `this.setState()`?
     1. TODO: finish
+19. How would you perform side effects using React Hooks in a React component?
+    1. invoke the `useEffect()` hook
+    2. [you pass `useEffect()` a function](https://reactjs.org/docs/hooks-effect.html#example-using-hooks) - by convention called an effect - and by default **React guarantees that it will invoke this effect after every render, including the first one**. This is how you get logic to run AFTER React has updated the DOM.
+    3. The effect you pass utilizes closure to retain access to the function component's scope (ie, props / state / etc...). Contrast this with how class components use a separate, React-specific API to interact with state
+20. What are some common example of side effects in a component?
+    1. data fetching
+    2. setting up a subscription
+    3. manipulating the DOM with the browser API
+21. List some examples of side effects in React that don't require cleanup?
+    1. manually manipulating the DOM
+    2. network requests
+    3. logging
+22. How is `useEffect()` different from class component lifecycle methods?
+    1. TODO: finish
+    2. TODO: finish effects don't block the browser from updating
+23. Are effects reused? why? why not?
+    1. TODO: finish
+24. Describe an approach for when your effect requires cleanup? What advantages does this approach have over classes?
+    1. Optionally, you can return a function from your effect. React will invoke this function before the component unmounts (ie, when `componentWillUnmount` would run). React also invokes this function before each re-render, which [helps prevent common bugs.](https://reactjs.org/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)
+    2. This approach allows you to keep related code together (encapsulation), rather than forcing a split based on the React lifecycle
+25. What's one way of preventing effects from running after every re-render?
+    1. `useEffect` optionally takes a second argument, an array (values from props / state), that React will compare with their current value(s), and [only run the effect if those values differ](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects).
 
 ### Redux
 
