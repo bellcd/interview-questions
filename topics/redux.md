@@ -10,7 +10,7 @@
 
 2. When / why would you use redux?
    1. The same piece of application state needs to be mapped to multiple application components
-      1. ie, session state
+      1. ie, session state`
    2. Global components that can be accessed from anywhere
       1. notifications, tooltips, modals, etc...
    3. Too many props are being passed through multiple levels of components
@@ -49,3 +49,8 @@
    1. middleware in redux is a function that wraps the store's dispatch method, performing some work
    2. Then, at some point later, the middleware calls the store's dispatch method, of the next middleware in the chain
    3. middleware functions can be chained
+8. Describe the `redux-actions` package? What benefits does it provide?
+   1. [`redux-actions`](https://redux-actions.js.org/) (or packages like it) provide a set of utility / wrapper functions that can make working with actions / action creators, and the reducers that handle those actions:
+      1. less verbose
+      2. more organized
+      3. more standardized
