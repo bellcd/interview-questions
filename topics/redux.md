@@ -45,12 +45,18 @@
       2. react-redux provides a `<Provider>` component that makes the redux store available to any child component
 6. Why is it important the reducers are pure functions, & do NOT mutate state?
    1. TODO: finish
-7. Describe middleware in Redux
-   1. middleware in redux is a function that wraps the store's dispatch method, performing some work
-   2. Then, at some point later, the middleware calls the store's dispatch method, of the next middleware in the chain
-   3. middleware functions can be chained
-8. Describe the `redux-actions` package? What benefits does it provide?
-   1. [`redux-actions`](https://redux-actions.js.org/) (or packages like it) provide a set of utility / wrapper functions that can make working with actions / action creators, and the reducers that handle those actions:
-      1. less verbose
-      2. more organized
-      3. more standardized
+7. Describe
+   1. Middleware in Redux
+      1. middleware in Redux is a function that wraps the store's dispatch method, performing some work
+      2. Then, at some point later, the middleware calls the store's dispatch method, of the next middleware in the chain
+      3. middleware functions can be chained
+   2. The `redux-actions` package? What benefits does it provide?
+      1. [`redux-actions`](https://redux-actions.js.org/) (or packages like it) provide a set of utility / wrapper functions that can make working with actions / action creators, and the reducers that handle those actions:
+         1. less verbose
+         2. more organized
+         3. more standardized
+   3. Reselect
+      1. Provides a utility function that creates [memoized Redux selectors](https://github.com/reduxjs/reselect#creating-a-memoized-selector), given
+         1. one or more input-selector functions
+         2. a transform function, that actually returns the value in question from the store
+      2. [These memoized selectors are composable](https://github.com/reduxjs/reselect#composing-selectors) (ie, they themselves can be input-selectors to the utility function that returns yet another memoized selector)
