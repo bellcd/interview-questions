@@ -54,7 +54,7 @@ add5(6) // 11
 ```
 
    6. Immutability
-      - Where a data structure is not changeable after creation. String are immutable in JavaScript. Objects & arrays are not.
+      - Where a data structure is not changeable after creation. Strings are immutable in JavaScript. Objects & arrays are not.
 
 |Pros|Cons|
 |----|----|
@@ -62,4 +62,4 @@ add5(6) // 11
 |Faster change detection for UI frameworks like React. (It's less work to tell if some property has changed, because a whole new object will be created whenever a property changes, and so the framework can do a computationally cheap referential identity check to see it it needs to update the UI (instead of a computationally expensive recursive check)|Memory overhead (because of all the object copies|
 |Concurrency - more scalable code, because you can run multiple functions in parallel (because they're not relying on external state to be a certain way, they're always creating NEW state||
 
-There are libraries such as Immutable.js & Immer to make handling this easier in JavaScript
+There are libraries such as [Immutable.js](https://immutable-js.github.io/immutable-js/) & [Immer](https://immerjs.github.io/immer/docs/introduction) to make handling this easier in JavaScript
