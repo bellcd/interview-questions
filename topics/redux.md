@@ -60,3 +60,14 @@
          1. one or more input-selector functions
          2. a transform function, that actually returns the value in question from the store
       2. [These memoized selectors are composable](https://github.com/reduxjs/reselect#composing-selectors) (ie, they themselves can be input-selectors to the utility function that returns yet another memoized selector)
+   4. Container VS Presentational components. Are there other names for these?
+      1. In Redux (or Flux patterns more generally) it can be helpful (easier to read, reason about, maintain) to [split code that contains the business logic](https://redux.js.org/basics/usage-with-react) (event handlers, connecting to the store, etc...) from code that renders the actual DOM nodes. The way this has evolved is with two components, Container & Presentational
+         1. Container Components
+            1. have access to the store, its dispatch method, etc...
+            2. contain the business logic
+            3. render an associated presentational component
+         2. Presentational Components (sometimes called dumb)
+            1. Rely on the container components for all of their inputs (through props)
+            2. render the actual DOM nodes
+            3. do NOT have direct access to the the store
+      2. The usefulness of splitting code like this scales with the size & complexity of the app, so it's better to carefully consider whether this pattern is appropriate, rather than automatically doing this every time.

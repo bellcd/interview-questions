@@ -62,3 +62,6 @@
       2. If there is no other option, libuv will handle asynchronous operations with the default thread pool of four (4) threads that it creates
    3. ~~The event loop is something like a stack of queue~~
       1. The event loop is a set of phases with specific tasks that are processed in round robin format
+9. Explain:
+   1. Middleware in Node.js
+      1. TODO: finish

@@ -1,4 +1,4 @@
-# Fundamentals
+# JavaScript Fundamentals
 
 1. Describe general pros & cons to using JavaScript
    1. TODO: finish
@@ -39,24 +39,29 @@
       1. TODO: finish
    7. closure. How is closure helpful?
       1. TODO: finish
-   8. event delegation
+   8. event delegation. Describe the performance tradeoffs.
       1. TODO: finish
    9. object literal
       1. TODO: finish
    10. object & array destructuring
        1. TODO: finish
    11. Callbacks VS Promises VS async / await
-       1. TODO: finish
-   12. Immutability in JavaScript
+       1.  TODO: finish
+   12. How would you use promises right after each other?
+       1.  TODO: finish
+   13. How do you handle needing to wait for multiple promises to finish?
+       1.  TODO: finish
+   14. Immutability in JavaScript
        1. Are objects & arrays in JavaScript immutable?
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
-   13. Syntactic Sugar, and give at least 1 example
+   15. Syntactic Sugar, and give at least 1 example
        1. When the language provides a different (also simpler / cleaner / easier to understand / shorter / "better" / etc...) syntax for **accomplishing the exact same task**
           1. `async` & `await`, so you don't have to work with `.then` blocks
           2. the `class` keyword in JavaScript
           3. the spread & rest operators
           4. object & array destructuring
+   16. Worker (and when / why you would use one)
 6. What's the difference between
     1. WET & DRY code?
        1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code
@@ -74,11 +79,12 @@
        2. arrow function
           1. declared with arrow function syntax `() => {}`
           2. uses the `this` context of its containing scope
-    6. the functions `call` & `apply`. What are they used for?
+    6. the functions `call`, `apply`, & `bind`. What are they used for?
         1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
         2. `call` & `apply` are used to invoke another function, optionally with:
            1. a different `this` context
            2. additional arguments
+        3. `bind` is used to bind a function's `this` context to a particular `this` context. It returns a new function that will always invoke with the given `this` context, along with any additional arguments passed. A function like this is needed because of how `this` works in JavaScript (ie, the value of `this` is not known until runtime, instead of at author-time, like in other languages)
     7. `JSON.stringify()` & `toString()`
         1. `toString()`
             1. method on `Object.prototype`
@@ -97,4 +103,12 @@
     10. the JavaScript callstack & the JavaScript memory heap?
        3. TODO: finish
 7. How does the internet work?
-    - TODO: finish
+   1. TODO: finish
+8. Describe the request / response cycle
+   1. TODO: finish
+9. What's the difference between the head & body of a request / response?
+   1.  TODO: finish
+10. How do template strings work in ES6?
+   2. TODO: finish
+11. What are the 5 instantiation patterns in JavaScript? Describe pros / cons of each, and why / where you would use them.
+   3.  TODO: finish
