@@ -57,24 +57,29 @@
        1. refs are a way to get references to:
           1. the underlying DOM node (for browsers)
           2. mounted instance of the component
-       2. refs are used when you need that direct reference (ex, for accessing state if it lives in the DOM node)
+       2. [refs are used when you need that direct reference](https://reactjs.org/docs/refs-and-the-dom.html) (ex, for accessing state if it lives in the DOM node)
           1. don't user them if you can avoid it (React pattern of lifting state up & passing props is generally preferred)
           2. use cases:
              1. managing focus, text selection, or media playback
              2. triggering imperative animation
              3. integrating with existing or already deployed third party DOM libraries
           3. `React.createRef()` or callback refs are preferred, instead of string refs & `ReactDOM.findDOMNode()`
-    7. forwardingRefs
+          4. refs can only be used on HTML elements & class components. You CANNOT use a ref on function component. (but you can use them inside function components)
+       3. refs updates happen before `componentDidMount` / `componentDidUpdate`
+    7. callback refs
+       1. [callback refs are a a way to get more control over the ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)
+          1. You set the ref attribute equal to a callback function (instead of an object ref created with `React.createRef`). That callback receives either the DOM node or the component instance before `componentDidMount` / `componentDidUpdate` invokes, and `null` when the component unmounts.
+    8. forwardingRefs
        1. TODO: finish
-    8. Context in React
-       1. Context in React is way to pass data through the component tree, without having to explicitly pass that data at each level (ie, the component that needs the data could be 50 levels down from where the data lives, manually wiring that data through 50 intermediate components leads to very WET code)
-       2. Before using Context, consider if using component composition might be simpler (ie, defining the component that needs the data in the component where the data lives as state, then passing that whole component as a prop - instead of passing each piece of data as a separate prop)
-       3. Which solution is better depends heavily on the number of components, props, nesting, etc...
-       4. Common use cases for Context (instead of component composition) are
+    9.  Context in React
+       2. Context in React is way to pass data through the component tree, without having to explicitly pass that data at each level (ie, the component that needs the data could be 50 levels down from where the data lives, manually wiring that data through 50 intermediate components leads to very WET code)
+       3. Before using Context, consider if using component composition might be simpler (ie, defining the component that needs the data in the component where the data lives as state, then passing that whole component as a prop - instead of passing each piece of data as a separate prop)
+       4. Which solution is better depends heavily on the number of components, props, nesting, etc...
+       5. Common use cases for Context (instead of component composition) are
           1. themes
           2. current locale
           3. data cache
-       5. React Context is an object
+       6. React Context is an object
 
          ```JavaScript
          const MyContext = React.createContext(defaultValue);
@@ -83,10 +88,10 @@
          // descendent components are also able to acess that value
          ```
 
-       6. In class components:
+       7. In class components:
           1. You assign `MyClass.contextType` to the context object you created earlier
           2. This makes the value defined in the nearest ancestor Context Provider available in this class at `this.context`
-       7. In function components:
+       8. In function components:
           1. You use `<MyContext.Consumer>` with a child of a function that accepts the value from the Context. That function returns a React Element
        8. Using the API, you can only consume a single Context. To consume more than one, either next several `<MyContext.Provider>`s, or consider using Render Props.
     9. the `key` prop. Why is it needed? what happens if you don't use it?
