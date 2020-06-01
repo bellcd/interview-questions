@@ -50,6 +50,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 - [Caching](./topics/caching.md)
 - [Testing](./topics/testing.md)
 - [Git](./topics/git.md)
+- [Package Managers](./topics/package-managers.md)
 - [Whiteboarding Questions](./topics/whiteboarding-questions.md)
 - [Personal](./topics/personal.md)
 - [Trivia](./topics/trivia.md)

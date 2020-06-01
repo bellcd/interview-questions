@@ -1,7 +1,7 @@
 # Accessibility (A11y)
 
 1. What are aria labels & why are they used?
-2. Is there a "source-of-truth" for accessibillity in web development? If so, what is it?
+2. Is there a "source-of-truth" for accessibility in web development? If so, what is it?
    1. [Perhaps, there's a guiding document called with WCAG 2.0 AA](https://www.w3.org/TR/WCAG20/)
       1. [In courts in the US, ADA compliance for websites has generally meant that you meet the 38 succeess criteria outlined in WCAG 2.0 AA](https://medium.com/@krisrivenburgh/the-ada-checklist-website-compliance-guidelines-for-2019-in-plain-english-123c1d58fad9)
 3. Why should web developers code for accessibility?
@@ -63,3 +63,8 @@
        4. accessibility of non-semantic controls
            1. ie, complex UI features
    2. Some might say it's possible to go overboard with WAI-ARIA ... aim for balance
+10. Explain
+    1.  aria-describedBy
+        1.  TODO: finish
+    2.  aria-live
+        1.  TODO: finish
