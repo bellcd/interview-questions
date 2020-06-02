@@ -93,7 +93,9 @@
           2. This makes the value defined in the nearest ancestor Context Provider available in this class at `this.context`
        8. In function components:
           1. You use `<MyContext.Consumer>` with a child of a function that accepts the value from the Context. That function returns a React Element
-       9. Using the API, you can only consume a single Context. To consume more than one, either next several `<MyContext.Provider>`s, or consider using Render Props.
+       8. Using the API, you can only consume a single Context. To consume more than one, either next several `<MyContext.Provider>`s, or consider using Render Props.
+    9. the `key` prop. Why is it needed? what happens if you don't use it?
+       1.  TODO: finish
 11. What are React Hooks?
     1. [An approach to accessing many useful React features that formerly required classes](https://reactjs.org/docs/hooks-intro.html) (state, lifecycle methods, etc...)
 12. What are the main problems that React Hooks aim to solve?

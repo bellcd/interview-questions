@@ -54,4 +54,6 @@
     1. no - certain routes might be public by design
     2. setting up the authorization as middleware
 16. Can you safely store JSON Web Tokens in a database? how?
-    1. TODO: finish
+    1.  TODO: finish
+17. What is CORS & what problem does it solve? Are there any drawbacks?
+    1.  TODO: finish

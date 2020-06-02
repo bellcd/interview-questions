@@ -1,4 +1,4 @@
-# Fundamentals
+# JavaScript Fundamentals
 
 1. Describe general pros & cons to using JavaScript
    1. TODO: finish
@@ -8,7 +8,7 @@
    1. TODO: finish
 5. Explain:
    1. scope
-      1. The areas of a running program where a lookup for a given variable can happen
+      1. The area of a running program where a lookup for a given variable can happen. Scopes can be nested inside each other, and inner scopes have access to variables defined in outer scopes (but not vice-versa) [docs](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
    2. var VS const VS let
       1. three (3) ways of declaring variables in JavaScript
       2. var - uses function scope
@@ -37,26 +37,57 @@
       1. TODO: finish
    6. Creation VS Execution phase
       1. TODO: finish
-   7. closure. How is closure helpful?
+   7. closure
+      1. closure is a way for functions to access variables that would otherwise be outside their scope.
+      ```js
+      function myFuncY() {
+         var a = 0;
+         function myFuncX() {
+            a += 1;
+            return a;
+         }
+         return myFuncX;
+      }
+
+      var x1 = myFuncY();
+      var result1 = x1();
+      var result2 = x1();
+
+      var x2 = myFuncY();
+      var result3 = x2();
+      var result4 = x2();
+      ```
+      1. For example, one way we could talk about the code above it to say that `x1` has a closure over `myFuncY`. We would also say that `x2` has a closure over `myFuncY` However, I find this verbiage incomplete, at best. If both `x1` & `x2` have a closure over `myFuncY`, what do you expect `result4` to be? 1? 4? It certainly looks like we're `myFuncX` a total of 4 times...
+      2. *`result4` equals 2*
+      3. Each time we invoke `myFuncY`, an execution context is created, with a local scope. When we declare `var a = 0`, we're declaring that *in local scope*, local to THIS INVOCATION of `myFuncY`. We then return a function, `myFuncX`, which has access to `a`, because `a` was declared in a parent scope to the scope of `myFuncX`. But because we're *returning* `myFuncX`, it needs some way to access variables it should have access to (ie, through normal lexical scope lookup) in whatever scope it ends up invoking in. Closure is what allows this to happen.
+      4. So the function referenced by `x1` has access (through closure) to the variable `a` that was in scope at the time that `myFuncX` function declaration was made. `x1` invokes, and the function increments that variable `a` first to 1, then to 2.
+         1. The variable `a` exists in an area that the interpreter creates - sometimes called a backpack. `x1` has access to this backpack.
+      5. When we invoke `myFuncY` again, a different - *different* - execution context is created. We also create a variable `a`, *different from before*, and set this new variable `a` to 0. Likewise, we declare a totally new function, that happens to have the same name & be identical to `myFuncX` from before. We return this function, and set it equal to `x2`.
+      6. So when we invoke `x2`, what is the value of `a` that that function increments? 0. *0*, not 2. The variable `a` that `x1` has access to and the variable `a` that `x2` have access to are *different variables* (that happen to have the same name), that live in *different backpacks*
+      7. So `result4` equals 2, not 4.
+   8. event delegation. Describe the performance tradeoffs.
       1. TODO: finish
-   8. event delegation
-      1. TODO: finish
-   9. object literal
-      1. TODO: finish
+   9.  object literal
+      2. TODO: finish
    10. object & array destructuring
        1. TODO: finish
    11. Callbacks VS Promises VS async / await
-       1. TODO: finish
-   12. Immutability in JavaScript
+       1.  TODO: finish
+   12. How would you use promises right after each other?
+       1.  TODO: finish
+   13. How do you handle needing to wait for multiple promises to finish?
+       1.  TODO: finish
+   14. Immutability in JavaScript
        1. Are objects & arrays in JavaScript immutable?
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
-   13. Syntactic Sugar, and give at least 1 example
+   15. Syntactic Sugar, and give at least 1 example
        1. When the language provides a different (also simpler / cleaner / easier to understand / shorter / "better" / etc...) syntax for **accomplishing the exact same task**
           1. `async` & `await`, so you don't have to work with `.then` blocks
           2. the `class` keyword in JavaScript
           3. the spread & rest operators
           4. object & array destructuring
+   16. Worker (and when / why you would use one)
 6. What's the difference between
     1. WET & DRY code?
        1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code
@@ -74,11 +105,12 @@
        2. arrow function
           1. declared with arrow function syntax `() => {}`
           2. uses the `this` context of its containing scope
-    6. the functions `call` & `apply`. What are they used for?
+    6. the functions `call`, `apply`, & `bind`. What are they used for?
         1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
         2. `call` & `apply` are used to invoke another function, optionally with:
            1. a different `this` context
            2. additional arguments
+        3. `bind` is used to bind a function's `this` context to a particular `this` context. It returns a new function that will always invoke with the given `this` context, along with any additional arguments passed. A function like this is needed because of how `this` works in JavaScript (ie, the value of `this` is not known until runtime, instead of at author-time, like in other languages)
     7. `JSON.stringify()` & `toString()`
         1. `toString()`
             1. method on `Object.prototype`
@@ -97,4 +129,12 @@
     10. the JavaScript callstack & the JavaScript memory heap?
        3. TODO: finish
 7. How does the internet work?
-    - TODO: finish
+   1. TODO: finish
+8. Describe the request / response cycle
+   1. TODO: finish
+9.  What's the difference between the head & body of a request / response?
+   2.  TODO: finish
+10. How do template strings work in ES6?
+   3. TODO: finish
+11. What are the 5 instantiation patterns in JavaScript? Describe pros / cons of each, and why / where you would use them.
+   4.  TODO: finish
