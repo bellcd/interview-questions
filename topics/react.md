@@ -70,7 +70,7 @@
        1. [callback refs are a a way to get more control over the ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)
           1. You set the ref attribute equal to a callback function (instead of an object ref created with `React.createRef`). That callback receives either the DOM node or the component instance before `componentDidMount` / `componentDidUpdate` invokes, and `null` when the component unmounts.
     8. forwardingRefs
-       1. TODO: finish
+       1. forwarding refs are a way for [parent (or ancestor) components to have access to some inner portion of a child component.](https://reactjs.org/docs/forwarding-refs.html#forwarding-refs-to-dom-components). This pattern should be avoided if possible, as it breaks component encapsulation.
     9.  Context in React
        2. Context in React is way to pass data through the component tree, without having to explicitly pass that data at each level (ie, the component that needs the data could be 50 levels down from where the data lives, manually wiring that data through 50 intermediate components leads to very WET code)
        3. Before using Context, consider if using component composition might be simpler (ie, defining the component that needs the data in the component where the data lives as state, then passing that whole component as a prop - instead of passing each piece of data as a separate prop)
