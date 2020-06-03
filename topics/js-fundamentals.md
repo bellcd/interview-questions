@@ -128,6 +128,15 @@
        2. can you use the spread operator to concatenate an array with another array?
     10. the JavaScript callstack & the JavaScript memory heap?
        3. TODO: finish
+    11. Using the `delete` keyword & `splice` method to remove an element from an array?
+        1. The `delete` keyword removes a property from an object, so in the case of an array, it will remove the *numeric* property. The length of the array remains unchanged.
+           ```js
+           let array = [0, 1, 2, 3, 4, 5];
+           delete array[2];
+           console.log(array) // Chrome would display this array as [0, 1, empty, 3, 4, 5]
+           console.log(array[2]) // undefined, because it's trying to access a property of an object (arrays are objects!) that doesn't exist
+           ```
+        2. Using `splice` to remove that element removes the property, but it [also reindexes the array, so the array length will change](https://stackoverflow.com/questions/500606/deleting-array-elements-in-javascript-delete-vs-splice). (ie, the example above would be `[0, 1, 3, 4, 5]`, so the elements 3, 4, & 5 are at *different indices* than they were when using `delete`).
 7. How does the internet work?
    1. TODO: finish
 8. Describe the request / response cycle
@@ -138,3 +147,4 @@
    3. TODO: finish
 11. What are the 5 instantiation patterns in JavaScript? Describe pros / cons of each, and why / where you would use them.
    4.  TODO: finish
+12.
