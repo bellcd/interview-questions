@@ -52,19 +52,23 @@
       1. ie, there should some version of the site accessible to a screen-reader, only using a keyboard
    2. Mouse-specific events (mousover, mouseout, etc...)
       1. include additional triggers for the event handlers - onfocus / onblur
-9. Explain WAI-ARIA
-   1. Adds additional semantics for screen readers through HTML attributes. There are four (4) main areas where this is useful.
-       1. signposts / landmarks via roll
-           1. ie, to replace / extend HTML semantics
-       2. dynamic content updates via aria-live
-           1. ie, AJAX requests
-       3. enhancing keyboard accessibility
-           1. using tabindex
-       4. accessibility of non-semantic controls
-           1. ie, complex UI features
-   2. Some might say it's possible to go overboard with WAI-ARIA ... aim for balance
-10. Explain
-    1.  aria-describedBy
-        1.  TODO: finish
-    2.  aria-live
-        1.  TODO: finish
+9. WAI-ARIA
+   1. Explain
+     1. Adds additional semantics for screen readers through HTML attributes. There are four (4) main areas where this is useful.
+          1. signposts / landmarks via roll
+              1. ie, to replace / extend HTML semantics
+          2. dynamic content updates via aria-live
+              1. ie, AJAX requests
+          3. enhancing keyboard accessibility
+              1. using tabindex
+          4. accessibility of non-semantic controls
+              1. ie, complex UI features
+     2. Some might say it's possible to go overboard with WAI-ARIA ... aim for balance
+     3. aria-describedBy
+        1. TODO: finish
+     4. aria-live
+        1. TODO: finish
+   2. List the critical parts of the [Disclosure (Show / Hide) pattern](https://www.w3.org/TR/wai-aria-practices-1.1/examples/disclosure/disclosure-img-long-description.html)
+      1. A `button` that controls the visibility of a section, typically styled with an arrow that points right (hidden) or down (visible)
+      2. An `aria-expanded` attribute with either `true` or `false` values, matching the visible or hidden state of the section. The styling should be conditional on this attribute (ie, CSS attribute selectors with `[aria-expanded="false"`, etc...)
+      3. An `aria-controls` attribute with a value that identifies the section being controlled (optional)
