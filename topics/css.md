@@ -28,7 +28,25 @@
 6. What's the difference between
     1. CSS3 variables & SASS variables?
        1. TODO: finish this
-7. Explain:
+    2. `flex-grow` & `flex-shrink`?
+       1. `flex-grow` defines how fast a flex-item grows - along the main axis - compared to other items, while `flex-shrink` does the same thing for shrinking.
+       2. These are typically defined in the `flex` property, which by default is `flex: 0 1 auto;`
+    3. Setting flex-basis to `auto` VS `0` VS a fixed size (pixels, rems, etc...)
+       1. `auto` is saying size the flex item based on the intrinsic size of the flex item's content
+       2. `0` is saying that flex item does NOT have any intrinsic size
+       3. A fixed size is saying that flex item has an intrinsic value of that-fixed-size
+       4. This matters because `flex-grow` & `flex-shrink` can only use the amount of space that's available AFTER each item is laid out based on its `flex-basis`
+7. What are some common shorthands of `flex`?
+   1. `flex: auto;`
+      1. same as `flex: 1 1 auto;`
+   2. `flex: initial;`
+      1. `flex: 0 1 auto;`
+   3. `flex: none;`
+      1. `flex: 0 0 auto;`
+   4. `flex: 1;`
+      1. `flex: 1 0 0;`
+   5. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/flex)
+8. Explain:
    1. selectors
       1. These are the things you use to target the elements you want to apply CSS to
       2. Several selectors include
@@ -62,62 +80,67 @@
       1. TODO: finish
    9.  CSS Grid
       2. TODO: finish
-8. What's the difference between Flexbox & Grid? Why would you use one over the other?
-   1. TODO: finish
-9.  What CSS would you use to turn a span into a button?
+9.  What's the difference between Flexbox & Grid? Why would you use one over the other?
+   10. TODO: finish
+10. What CSS would you use to turn a span into a button?
     - This is possible with things like `border-radius`, `box-shadow`, `background-color`, `border`, etc ... But you would want to avoid this if possible for many reasons (ie, [by default buttons can be tabbed into & are hooked up to event handlers](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)). It would probably be better to take the default functionality of a button and adjust its styling to what you need.
-10. Describe the cascading part of CSS
-   2. CSS rules can override each other, and [the cascade of CSS determines what actually gets displayed](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance) when more than one property value applies to the same property of the same element.
-   3. In general, the order is:
+11. Describe the cascading part of CSS
+   11. CSS rules can override each other, and [the cascade of CSS determines what actually gets displayed](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance) when more than one property value applies to the same property of the same element.
+   12. In general, the order is:
       1. Importance
       2. Specificity
       3. Source order
-11. What HTML & CSS would you use to make a horizontal nav bar?
-   4. One approach is to [use a flexbox](https://codepen.io/bellcd/pen/VwvQrdx).
-12. What is a float? and the `clear` property?
-   5. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it. Floated elements are removed from normal document flow.
-13. What values of the CSS display property can you remember offhand?
-   6. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
-14. What's the difference between inner & outer values of `display`?
+12. What HTML & CSS would you use to make a horizontal nav bar?
+   13. One approach is to [use a flexbox](https://codepen.io/bellcd/pen/VwvQrdx).
+13. What is a float? and the `clear` property?
+   14. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it. Floated elements are removed from normal document flow.
+14. What values of the CSS display property can you remember offhand?
+   15. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+15. What's the difference between inner & outer values of `display`?
     1. The outer value sets how the element interacts in flow layout
     2. The inner value sets how the element's direct children behave
     3. [spec](https://www.w3.org/TR/css-display-3/#the-display-properties)
-15. What would you do to make a website responsive?
-   7. Make sure you're layout will adapt for every screen size and shape you're targeting (ie, mobile / tablet / desktop / etc ...), using things like [flexible grids & media queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-16. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
+16. What would you do to make a website responsive?
+   16. Make sure you're layout will adapt for every screen size and shape you're targeting (ie, mobile / tablet / desktop / etc ...), using things like [flexible grids & media queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+17. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
     1. Depends on a number of things including [features, size, budget, timeframe, & technical skill level of the maintainers.](https://stackoverflow.blog/2020/02/03/is-it-time-for-a-front-end-framework/)
-17. What are CSS Preprocessors / CSS extension languages (SASS / LESS / etc... )? Pros / Cons?
+18. What are CSS Preprocessors / CSS extension languages (SASS / LESS / etc... )? Pros / Cons?
       1. CSS Preprocessors ([like SASS](https://sass-lang.com/)) compile what you've written in their specific syntax into standards compliant CSS.
       2. Pros
          1. Generally far easier for developers to work with, especially in larger codebases
          2. Includes extra features that can make your code DRYer or more performant (ie, nesting / @mixins / @use). NOTE: sometimes features introduced in preprocessors end up as spec in later versions of CSS (ie, variables)
       3. Cons
          1. Another learning curve
-18. What are styled components & how do they work?
+19. What are styled components & how do they work?
     1. TODO: finish
-19. How would theme-ing work with styled components?
+20. How would theme-ing work with styled components?
     1. TODO: finish
-20. Difference between `display: none` & `visibility: hidden`?
+21. Difference between `display: none` & `visibility: hidden`?
     1.  `display: none` **removes the element from the DOM**. So if something needs the element there (accessibility is a big reason, perhaps layout also), the element will not be there
     2.  `visibility: hidden` hides the element, but it's still in the DOM. Screen readers can still find it, and it still takes up space in the layout
-21. How would you scale an image responsively? Are there drawbacks to doing this?
+22. How would you scale an image responsively? Are there drawbacks to doing this?
     1.  TODO: finish
-22. Describe the CSS box model
+23. Describe the CSS box model
     1.  Every element the browser renders is represented as a box, described by [the CSS box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model). You can think of the CSS box model as being made up of 4 smaller boxes, Russian nesting doll style. Every one of these 4 boxes can have a width / height of 0 or greater. From the outside going in, the order is:
         1.  margin box
         2.  border box
         3.  padding box
         4.  content box - this is where the actual content is (text, image, video player, etc...)
-23. What is `border-box`?
+24. What is `border-box`?
     1.  If you assign a width (or height), by default, that width is the size of the content box. Padding & border (& margin) will be ADDED to that.
         1.  This is defined through the `box-sizing` property, which is `content-box` by default
     2.  Changing to `border-box`, will make the value you assign to width INCLUSIVE of the padding & border. So the amount of available space for that box's content will shrink (by the amount taken up by padding & border).
     3.  [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
-24. Describe the `writing-mode` property
+25. Describe the `writing-mode` property
     1.  Changes which direction inline content flows in & which direction block level elements stack in
     2.  English is `horizontal-tb`
     3.  [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)
-25. What are `inline-size` & `block-size`?
+26. What are `inline-size` & `block-size`?
     1.  These are replacements for width & height. Width & height are fixed to physical dimensions, whereas `inline-size` & `block-size` will change directions appropriately if you use a different `writing-mode`.
     2.  [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size)
     3.  There are appropriate alternate properties for [border, padding, & margin as well](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts)
+27. How do you center an item?
+    1.  You can use [flexbox with `justify-content` & `align-items`](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+28. What does setting a margin with a value of `auto` do?
+    1.  It absorbs all of the available space in the direction that it's applied in, pushing it away from other items.
+    2.  Useful for the common layout pattern for navigation bars of many elements on one side, and one or two pushed to the other side
