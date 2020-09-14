@@ -36,6 +36,10 @@
        2. `0` is saying that flex item does NOT have any intrinsic size
        3. A fixed size is saying that flex item has an intrinsic value of that-fixed-size
        4. This matters because `flex-grow` & `flex-shrink` can only use the amount of space that's available AFTER each item is laid out based on its `flex-basis`
+    4. The explicit and implicit grid with CSS grid?
+       1. The explicit grid is when you tell the browser to create a grid with this many tracks (ie, by defining `grid-template-rows` & `grid-template-columns` properties)
+       2. The implicit grid is additional tracks that the browser creates because there are more items to add to the grid than you explicitly defined space for. (or if you place an item outside the bounds of the explicit grid).
+       3. Tracks will be auto sized (ie, big enough to fit the content).
 7. What are some common shorthands of `flex`?
    1. `flex: auto;`
       1. same as `flex: 1 1 auto;`
@@ -79,7 +83,31 @@
    8. CSS Flexbox
       1. TODO: finish
    9.  CSS Grid
-      2. TODO: finish
+       1. Lines
+          1. These are the lines that make up your grid
+          2. Specifying a gap increases the thickness of these lines
+          3. The space between two lines is called a track - both column tracks & row tracks
+       2. Cell
+          1. The area between 4 grid lines
+          2. Direct children in the grid container get auto placed into each cell
+       3. Sizing keywords
+          1. `auto` - Looks at the size of the content, and makes the track as big as needed. For columns, this will stretch to take up available space.
+          2. `min-content` - Tracks will be the smallest the content can possibly be (ie, via soft-wrapping)
+          3. `max-content` - Tracks will be as big as they can (may cause overflows of the grid container)
+          4. `fit-content()` - You pass a value. It tries to go to max-content, but not beyond the value you pass. Then it wraps.
+          5. `fr` - These represent proportions of the available space, after any gaps & fixed length tracks are accounted for. Only available to grid layouts.
+             1. `fr` is is really `minmax(auto, 1fr)`. ie, distributing available space from a minimum size to fit the content.
+          6. `minmax()` - Allows you to set a minimum and maximum value for the size of a track.
+             1. Setting `minmax(0, 1fr)` is saying this thing has no minimum size. So start from 0, and distribute the space. (may cause overflows)
+          7. `repeat()` - Allows you to repeat tracks, or groups of tracks
+          8. `auto-fill` - You telling the browser to fit as many tracks of a particular size as you can
+             1. Especially useful with `minmax()` for the size, as you could have each track expand when the browser can't fit another track of a given minimum size
+          9. `auto-fit` - You'll only see the difference between `auto-fill` & `auto-fit` when there aren't enough elements to fill up the first row.
+             1.  `auto-fill` Leaves the space for those tracks in the layout
+             2.  `auto-fit` Collapses the space for those tracks. The tracks are still there, but they take up no space.
+       4. Auto placement
+          1. The browser will attempt to place any child elements into the grid, starting with the ones you have specified positions for.
+          2. Auto placed items can span more than one track with `span`
 9.  What's the difference between Flexbox & Grid? Why would you use one over the other?
    10. TODO: finish
 10. What CSS would you use to turn a span into a button?
