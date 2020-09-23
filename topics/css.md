@@ -57,11 +57,14 @@
          1. id, class, type, & descendent
       3. You can combine several selectors
       4. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
-   2. ruleset (or simply rule)
+   2. How does generated content work with the selectors `::before` & `::after`?
+      1. The content is placed as the first / last child of the element you apply it to
+      2. One technique is to use generated content, specifically `content: '';`, to be able to style grid items that otherwise have no content
+   3. ruleset (or simply rule)
       1. [the whole structure that people typically think of when describing CSS](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
       2. contains one or more selectors and one or more declarations
          1. each declaration consists of a property & a property value
-   3. specificity
+   4. specificity
       1. This is a value that is computed for every CSS selector. It solves the following problem:
       2. When there are two or more selectors that target the same element with mutually exclusive styles, whose styles get applied? (ie, `color: red` & `color: blue`)
       3. The selector with the higher specificity gets applied
@@ -71,18 +74,18 @@
          3. [interactive tool](https://specificity.keegan.st/)
          4. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
          5. [funny thing that will help you remember specificity](https://specifishity.com/)
-   4. BEM
+   5. BEM
       1. [BEM (Block, Element, Modifier)](https://en.bem.info/methodology/quick-start/) is a naming convention around classes and how they are used
-   5. What's the point of using something like BEM?
+   6. What's the point of using something like BEM?
       1. Enforcing a consistent approach like this (even if it's not specifically BEM!) helps with readability, maintainability, & makes the codebase easier to reason about & change, especially as it grows & with lots of developers
-   6. Pros & cons of the BEM naming convention to only have 1 element in the name
+   7. Pros & cons of the BEM naming convention to only have 1 element in the name
       1. Only having one (1) element listed in the name, rather than having the whole breadcrumb path (ie, the DOM node hierarchy) of every other element that's above it, keeps the codebase more concise, & allows you to adjust the DOM structure (ie, which elements are nested inside which other elements) **WITHOUT having to edit a bunch of CSS class names - the element names - to reflect the new DOM hierarchy you just changed.**
       2. As a tradeoff, you don't see that DOM hierarchy in the CSS class names
-   7. Why would you namespace with prefixes?
+   8. Why would you namespace with prefixes?
       1. [Improves code readability](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
-   8. CSS Flexbox
-      1. TODO: finish
-   9.  CSS Grid
+   9.  CSS Flexbox
+      2. TODO: finish
+   10. CSS Grid
        1. Lines
           1. These are the lines that make up your grid
           2. Specifying a gap increases the thickness of these lines
@@ -108,28 +111,35 @@
        4. Auto placement
           1. The browser will attempt to place any child elements into the grid, starting with the ones you have specified positions for.
           2. Auto placed items can span more than one track with `span`
+       5. Alignment
+          1. Grid is writing mode aware, so the block & inline axes for the grid can change depending on the writing mode. For English, the block axis is vertical & inline axis is horizontal.
+          2. Properties that adjust the block axis start with the prefix `align`, (`align-content`, `align-items`, `align-self`).
+          3. For the inline axis, you use properties that begin with `justify`, (`justify-content`, `justify-items`, `justify-self`).
+          4. Properties that end with `-content` are for sharing out extra space. You'll have extra space if your grid tracks don't add up to the size of the grid container. The `-content` properties, `align-content` & `justify-content`, are only going to make a difference if you have spare space to distribute. ie, if you're using tracks defined with `fr`, there won't be any spare space, so these properties won't do anything! The default for the `-content` properties is `start` (so for English, top left).
+          5. For the alignment of the content within each cell, you use the properties that end in `-items`, (`align-items` & `justify-items`). The default for these is `stretch`. (Except when you have a direct child with an instrinsic aspect ratio, ie an image. Then it's `start`).
+          6. Properties that end in `-items` sets the values on the whole group - all of the items in the grid at once. To change these values on only 1 particular item at a time, use `-self` (`align-self` & `justify-self`). The `-self` properties go on the grid item (instead of the grid container).
 9.  What's the difference between Flexbox & Grid? Why would you use one over the other?
-   10. TODO: finish
+   11. TODO: finish
 10. What CSS would you use to turn a span into a button?
     - This is possible with things like `border-radius`, `box-shadow`, `background-color`, `border`, etc ... But you would want to avoid this if possible for many reasons (ie, [by default buttons can be tabbed into & are hooked up to event handlers](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)). It would probably be better to take the default functionality of a button and adjust its styling to what you need.
 11. Describe the cascading part of CSS
-   11. CSS rules can override each other, and [the cascade of CSS determines what actually gets displayed](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance) when more than one property value applies to the same property of the same element.
-   12. In general, the order is:
+   12. CSS rules can override each other, and [the cascade of CSS determines what actually gets displayed](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance) when more than one property value applies to the same property of the same element.
+   13. In general, the order is:
       1. Importance
       2. Specificity
       3. Source order
 12. What HTML & CSS would you use to make a horizontal nav bar?
-   13. One approach is to [use a flexbox](https://codepen.io/bellcd/pen/VwvQrdx).
+   14. One approach is to [use a flexbox](https://codepen.io/bellcd/pen/VwvQrdx).
 13. What is a float? and the `clear` property?
-   14. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it. Floated elements are removed from normal document flow.
+   15. A floated element moves to the left or right of its container, allowing text & inline elements to flow around it. Floated elements are removed from normal document flow.
 14. What values of the CSS display property can you remember offhand?
-   15. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+   16. [docs](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 15. What's the difference between inner & outer values of `display`?
     1. The outer value sets how the element interacts in flow layout
     2. The inner value sets how the element's direct children behave
     3. [spec](https://www.w3.org/TR/css-display-3/#the-display-properties)
 16. What would you do to make a website responsive?
-   16. Make sure you're layout will adapt for every screen size and shape you're targeting (ie, mobile / tablet / desktop / etc ...), using things like [flexible grids & media queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+   17. Make sure you're layout will adapt for every screen size and shape you're targeting (ie, mobile / tablet / desktop / etc ...), using things like [flexible grids & media queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 17. I say to you make a website, do you choose vanilla JavaScript, React, Angular, Vue, jQuery, or something else? Why?
     1. Depends on a number of things including [features, size, budget, timeframe, & technical skill level of the maintainers.](https://stackoverflow.blog/2020/02/03/is-it-time-for-a-front-end-framework/)
 18. What are CSS Preprocessors / CSS extension languages (SASS / LESS / etc... )? Pros / Cons?
@@ -172,3 +182,16 @@
 28. What does setting a margin with a value of `auto` do?
     1.  It absorbs all of the available space in the direction that it's applied in, pushing it away from other items.
     2.  Useful for the common layout pattern for navigation bars of many elements on one side, and one or two pushed to the other side
+29. What is `grid-template-areas`? When is it appropriate to use it?
+    1. Defining your grid, ASCII art style, in a CSS property
+    2. Every cell in the grid must be accounted for
+    3. Most appropriate for:
+       1. Smaller grids
+       2. Grids with a definite amount of items (the amount of cells displayed is not going to change dynamically)
+       3. It's much faster (and perhaps lower cognitive load) to adjust the layout of your grid items in the ASCII art, rather than adjusting the start & end lines for each item's CSS properties
+30. Are there conventions for naming grid lines? Any benefits?
+    1.  Yes, using `-start` & `-end` on lines you name matches a feature the CSS grid does. This allows you to, for example,
+        1.  Place an item using a given name, without having to define that name in `grid-template-area` (ie, with `container-start` & `container-end` named lines outlining an area, you could use `grid-area: container` to place an item).
+    2.  If you have an area `main` defined with `grid-template-areas`, CSS grid will generate `main-start` & `main-end` lines. You could then use those lines to place some other item, allowing for overlap.
+31. Are the `align-` & `justify-` properties used with flexbox or grid?
+    1.  Trick question, those properties are part of the Box Alignment specification. So although they started in flexbox, they are now used for both flexbox & grid (and perhaps others as well).
