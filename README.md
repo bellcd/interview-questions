@@ -32,7 +32,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 - [Angular](./topics/angular.md)
 - [React](./topics/react.md)
 - [Redux](./topics/redux.md)
-- [Build Tools][./topics/build-tools.md]
+- [Build Tools]()./topics/build-tools.md)
 - [Security](./topics/security.md)
 - [Page Load Speed](./topics/page-load-speed.md)
 - [Project Management](./topics/project-management.md)
@@ -50,6 +50,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 - [Caching](./topics/caching.md)
 - [Testing](./topics/testing.md)
 - [Git](./topics/git.md)
+- [RxJS](./topics/RxJS.md)
 - [Package Managers](./topics/package-managers.md)
 - [Whiteboarding Questions](./topics/whiteboarding-questions.md)
 - [Python Questions](./topics/python.md)
