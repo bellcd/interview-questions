@@ -4,7 +4,7 @@
 1. What is RxJS?
    1. The JavaScript version of the ReactiveX programming library
 2. What problem does it solve?
-   1. Simplifies much of the callback hell that promises (in JavaScript) solve, but for multiple values - where promises resolve to a single value. The value of the benefits grows with the complexity of the app.
+   1. TODO: finish
 3. What are the tradeoffs in using it?
    1. Pros
       1. Excels at handling the complexity of modern apps (ie, modern UIs with many interlocking events and state changes)
