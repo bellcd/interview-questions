@@ -54,6 +54,7 @@ A collection of interview questions I've been asked, to help you better prepare 
 - [Package Managers](./topics/package-managers.md)
 - [Whiteboarding Questions](./topics/whiteboarding-questions.md)
 - [Python Questions](./topics/python.md)
+- [SVG](./topics/svg.md)
 - [Math](./topics/math.md)
 - [Personal](./topics/personal.md)
 - [Trivia](./topics/trivia.md)
