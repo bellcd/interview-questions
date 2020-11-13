@@ -49,3 +49,12 @@
  1. Tell me about something exciting that you've worked on recently.
  2. What's your favorite bug?
  3. Tell me about an interesting challenge you encountered recently & how you handled it?
+ 4. What is the next skill you'd like to learn?
+ 5. Talk about your previous experience building single page applications.
+ 6. What do you look for when evaluating an employment opportunity?
+ 8. Have you ever worked with a remote-first company before? What interests you about this style of work?
+ 9.  What feature would you remove from your favorite programming language?
+ 10. Agree or disagree: Inheritence is better than composition
+ 11. Agree or disagree: Many small functions can help make a codebase easier to understand
+ 12. Agree or disagree: the "standard" Rails pattern scales complexity well
+ 13. Agree or disagree: Comments are better than long function names
