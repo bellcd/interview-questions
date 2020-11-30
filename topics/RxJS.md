@@ -29,3 +29,20 @@
    1. A common analogy for RxJS is a stream (river) with things flowing down it
 9. Are observables synchronous or asynchronous?
    1.  Trick question. Observables can handle data that arrives synchronously or asynchronously, and there are many operators to make controlling this easier.
+10. What's the difference between unicast & multicast in the context of RxJS?
+    1.  unicasting
+        1.  meaning each subscriber creates an individual execution path between the observable & the observer 
+        2.  each subscription to the observable creates a new execution path, a separate producer, ie - the relationship between observers / subscribers & execution paths will always be 1:1
+        3.  this is the default behavior in RxJS
+        4.  completing one observable (one execution path) has no impact on any other
+    2.  multicasting
+        1.  subject
+            1.  Subjects in RxJS are a mix between an observable & an observer, so they have  `pipe` & `subscribe` methods like observables, but also `next`, `error`, & `complete` methods like observers.
+            4.  Subscribers of subjects are registered to, and share an execution to, an observable. Subjects are used to deliver a single notification to multiple subscribers.
+11. What are some common use cases for multicasting in RxJS?
+    1.  Sharing messages or state with multiple layers in your application (ie, broadcasting the same thing to any observer who cares to listen, similar to how EventEmitters work)
+    2.  You don't want or need to create a new resource on every new subscription
+    3.  You want to share part of an execution path between multiple observers
+    4.  If there's an expensive operation / network request that we don't want to repeat on new subscribers
+12. What's the purpose of the `asObservable` method?
+    1.  TODO: finish
