@@ -134,7 +134,8 @@
            let array = [0, 1, 2, 3, 4, 5];
            delete array[2];
            console.log(array) // Chrome would display this array as [0, 1, empty, 3, 4, 5]
-           console.log(array[2]) // undefined, because it's trying to access a property of an object (arrays are objects!) that doesn't exist
+           console.log(array.length) // 5
+           console.log(array[2]) // undefined, because it's trying to access a property of an object (in JavaScript, arrays are objects!) that doesn't exist
            ```
         2. Using `splice` to remove that element removes the property, but it [also reindexes the array, so the array length will change](https://stackoverflow.com/questions/500606/deleting-array-elements-in-javascript-delete-vs-splice). (ie, the example above would be `[0, 1, 3, 4, 5]`, so the elements 3, 4, & 5 are at *different indices* than they were when using `delete`).
 7. How does the internet work?
@@ -147,4 +148,7 @@
    3. TODO: finish
 11. What are the 5 instantiation patterns in JavaScript? Describe pros / cons of each, and why / where you would use them.
    4.  TODO: finish
-12.
+12. Explain the different ways to get asynchronously executing code in JavaScript
+    1.  TODO: finish, ie - task queue VS microtask queue VS setAnimationFrame
+13. Are there any downsides to using the microtask queue as your default for async work?
+    1.  TODO: finish, ie - microtask queue is blocking to certain browser actions?

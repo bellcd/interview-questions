@@ -46,3 +46,41 @@
     4.  If there's an expensive operation / network request that we don't want to repeat on new subscribers
 12. What's the purpose of the `asObservable` method?
     1.  TODO: finish
+13. What is a ConnectableObservable? What's its purpose?
+    1.  TODO: finish
+14. What's the difference between `multicast()`, `refcount()`, & `share()`
+    1.  TODO: finish
+15. What's a Scheduler?
+    1.  TODO: finish
+16. What's the difference between hot & cold observables?
+    1.  TODO: finish
+17. How do you test RxJS? Pros & Cons?
+    1.  Marble testing, which uses marble diagrams, represented in ASCII, to confirm the behavior of your streams
+        1.  Pros - you can test that both the value & timing of notifications is as expected
+        2.  Cons - TODO: finish
+    2.  Subscribe & Assert pattern, which involves you verifying results in the subscribe function
+        1.  Pros - TODO: finish
+        2.  Cons - TODO: finish
+18. What characters are used in marble testing? What do they mean?
+    1.  `-` for 1 frame of virtual time
+    2.  `[a-z0-9]` (alphanumerics) for emitted values
+    3.  `#` for errors
+    4.  `()` for groupings of synchronous values
+    5.  `|` for complete notification
+    6.  `^` for subscription point
+    7.  `!` for unsubscribe point
+19. What does the testScheduler do?
+    1.  Exposes helpers to parse & compare ASCII diagrams
+    2.  Contains functions that will allow us to run tests on async operators synchronously
+    3.  Any async operators that appear inside the first argument to `testScheduler.run` automatically use the testScheduler so we can write synchronous test against previous async code
+        1.  Generally, all logic for your test should be placed inside the `run` function
+        2.  Useful methods on the helper object passed to `run` include:
+            1.  `cold` - lets us create a cold observable from a marble string. Cold observable subscriptions will start when the test begins.
+            2.  `expectObservable` - accepts an observable & lets you compare the output of it to an expected marble diagram
+                1.  When you pass an observable to the `expectObservable` method, it converts this observable into an array of objects. These objects represent each emission, containing details like the notification type & frame. `toBe` does the same thing for the string you pass it. The function you provided to the TestScheduler on creation is then invoked with both arrays, and any assertions are run with the actual & expected output.
+20. How do you test that your observables emitted values that don't fit in the ASCII diagram?
+    1.  `cold`, `hot`, & `toBe` methods accept a second argument, a mapping of the values in ASCII string representations to another - arbitrary - value
+21. How do you test that intermediate observable subscription / unsubscription happened correctly?
+    1.  You can test that the observables contained in combined streams are subscribed to & unsubscribed from at the appropriate times
+22. How would you verify how emissions that happened before subscription would impact your streams?
+    1.  The `hot` helper method lets you create a hot observable who's subscription point you can identify using a `^`
