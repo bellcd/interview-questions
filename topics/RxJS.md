@@ -56,31 +56,57 @@
     1.  TODO: finish
 17. How do you test RxJS? Pros & Cons?
     1.  Marble testing, which uses marble diagrams, represented in ASCII, to confirm the behavior of your streams
-        1.  Pros - you can test that both the value & timing of notifications is as expected
-        2.  Cons - TODO: finish
+        1.  Pros
+            1.  You can test that both the value & timing of notifications is as expected
+            2.  Relatively easy to create & visualize streams
+        2.  Cons
+            1.  Involved setup
+            2.  Required knowledge of testing helpers & marble syntax
     2.  Subscribe & Assert pattern, which involves you verifying results in the subscribe function
-        1.  Pros - TODO: finish
-        2.  Cons - TODO: finish
-18. What characters are used in marble testing? What do they mean?
-    1.  `-` for 1 frame of virtual time
-    2.  `[a-z0-9]` (alphanumerics) for emitted values
-    3.  `#` for errors
-    4.  `()` for groupings of synchronous values
-    5.  `|` for complete notification
-    6.  `^` for subscription point
-    7.  `!` for unsubscribe point
-19. What does the testScheduler do?
-    1.  Exposes helpers to parse & compare ASCII diagrams
-    2.  Contains functions that will allow us to run tests on async operators synchronously
-    3.  Any async operators that appear inside the first argument to `testScheduler.run` automatically use the testScheduler so we can write synchronous test against previous async code
-        1.  Generally, all logic for your test should be placed inside the `run` function
-        2.  Useful methods on the helper object passed to `run` include:
-            1.  `cold` - lets us create a cold observable from a marble string. Cold observable subscriptions will start when the test begins.
-            2.  `expectObservable` - accepts an observable & lets you compare the output of it to an expected marble diagram
-                1.  When you pass an observable to the `expectObservable` method, it converts this observable into an array of objects. These objects represent each emission, containing details like the notification type & frame. `toBe` does the same thing for the string you pass it. The function you provided to the TestScheduler on creation is then invoked with both arrays, and any assertions are run with the actual & expected output.
-20. How do you test that your observables emitted values that don't fit in the ASCII diagram?
-    1.  `cold`, `hot`, & `toBe` methods accept a second argument, a mapping of the values in ASCII string representations to another - arbitrary - value
-21. How do you test that intermediate observable subscription / unsubscription happened correctly?
-    1.  You can test that the observables contained in combined streams are subscribed to & unsubscribed from at the appropriate times
-22. How would you verify how emissions that happened before subscription would impact your streams?
-    1.  The `hot` helper method lets you create a hot observable who's subscription point you can identify using a `^`
+        1.  Pros
+            1.  Much less setup involved (ie, typical testing APIs & patterns)
+        2.  Cons
+            1.  Must manually manage async test completion
+                1.  careful planning is required to make sure your tests don't actually wait for the async things to happen
+            2.  Extra boilerplate involved for making assertions
+                1.  ie, VS marble testing, where much of this boilerplate is handled for you by the helper functions
+            3.  Difficult to test timing of patterns
+18. Marble Testing
+    1.  What characters are used in marble testing? What do they mean?
+        1.  `-` for 1 frame of virtual time
+        2.  `[a-z0-9]` (alphanumerics) for emitted values
+        3.  `#` for errors
+        4.  `()` for groupings of synchronous values
+        5.  `|` for complete notification
+        6.  `^` for subscription point
+        7.  `!` for unsubscribe point
+    2.  What does the testScheduler do?
+        1.  Exposes helpers to parse & compare ASCII diagrams
+        2.  Contains functions that will allow us to run tests on async operators synchronously
+        3.  Any async operators that appear inside the `testScheduler.run` callback automatically use the testScheduler so we can write synchronous test against previous async code. They will simulate the passing of time with virtual time instead. There is a time progression syntax for when many dashes become impractical.
+            1.  Generally, all logic for your test should be placed inside the `run` function
+            2.  Useful methods on the helper object passed to `run` include:
+                1.  `cold` - lets us create a cold observable from a marble string. Cold observable subscriptions will start when the test begins.
+                2.  `expectObservable` - accepts an observable & lets you compare the output of it to an expected marble diagram
+                    1.  When you pass an observable to the `expectObservable` method, it converts this observable into an array of objects. These objects represent each emission, containing details like the notification type & frame. `toBe` does the same thing for the string you pass it. The function you provided to the TestScheduler on creation is then invoked with both arrays, and any assertions are run with the actual & expected output.
+    3.  How do you test that your observables emitted values that don't fit in the ASCII diagram?
+        1.  `cold`, `hot`, & `toBe` methods accept a second argument, a mapping of the values in ASCII string representations to another - arbitrary - value
+    4.  How do you test that intermediate observable subscription / unsubscription happened correctly?
+        1.  You can test that the observables contained in combined streams are subscribed to & unsubscribed from at the appropriate times
+    5.  How would you verify how emissions that happened before subscription would impact your streams?
+        1.  The `hot` helper method lets you create a hot observable who's subscription point you can identify using a `^`
+    6.  What does a frame represent in marble diagrams? How do you interact with them?
+        1.  TODO: finish
+    7.  How do you model synchronous emissions for testing?
+        1.  You surround the emitted values with parenthesis in your expected diagram. If the observable completes after emitting its final next notification, this complete notifaction must also be inside the expected diagram parenthesis.
+    8.  When using time progression syntax, each emitted value advances a frame
+        1.  TODO: finish, is this a common source of off-by-1 errors?
+    9.  How do you test long running observables with no guaranteed completion?
+        1.  TODO: finish
+        2.  `expectObservable` accepts a second argument indicating when to unsubscribe manually from the observable under test
+19. Subscribe and Assert Testing
+    1.  How do you generate expected values?
+        1. One option is to create an array of expected values, then assert against the value at each index in the subscribe function
+        2. If you only need to test the final, emitted values - on completion - then you can use the `toArray` operator
+    2.  What's a common gotcha when testing with Jest in this pattern?
+        1.  Make sure to call `done` on complete notification, otherwise your assertions in the subscribe function will not run
