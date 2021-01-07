@@ -51,3 +51,19 @@
 5. Is it always better to test implementation OR behavior?
    1. Both have their place, but in general you probably want to lean more towards testing behavior (even in unit tests!) rather than implementation. This leads to more resilient tests (ie, they're less likely to break after every tiny refactor)
    2. Testing implementation can become necessary when there is complex logic / many conditionals / etc...
+6. Common 'gotchas'
+   1. with Enzyme
+      1. `wrapper.setProps({})` doesn't seem to be updating the prop you're specifying
+         1. Verify which component the wrapper refers to. ie, are you using redux? with react-redux? What are you exporting from the component file? Your `wrapper` might refer to the wrapped component returned from react-redux's `connect()` function. Also, does your component have any mappings to props? (ie, from something like `mapStateToProps`) If so, if the prop already has a mapping, regardless of what you specify in setProps(), it will use the value from the mapping. If there's no mapping, the prop will get passed as you specify.
+            1. Solutions
+               1. Specify the values that you need to test as part of redux state when you initially setup your store for that test.
+      2. `wrapper.simulate()` doesn't seem to be triggering the desired event
+         1.  `simulate` requires a literal prop on the component to invoke. ie, if you're listening for a scroll event, you literally need an onScroll prop on the React element in question.
+         2.  Solutions
+             1.  Use [dispatchEvent](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent)
+     1.  working with RxJS & jest
+         1.  assertions - using `expect()` - in your next callback may produce odd results (mismatched number of emissions flowing through your streams, missed assertions / logs, missed errors, false positive tests)
+             1.  Solutions 
+                 1.  Use Jest's `done` callback in the test (the complete notifiction is one place to call it)
+                 2.  Move your assertions outside of your next callback, and instead use the next callback to construct an `actual` array of results to assert against. The `done` callback is not necessary here.
+                     1.  TODO: risk of memory leaks with this approach?

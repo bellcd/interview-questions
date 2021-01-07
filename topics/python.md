@@ -92,7 +92,7 @@
 22. Talk about functions in Python
     1.  Defined using `def`
     2.  By default, functions return the `None` value
-    3.  Python functions can return multiple values, with something called a tuple. Tuples in Python are ordered, immutable collections. They are written with parentheses, ie `my_tuple = (1, 3, 5, 7)`
+    3.  Python functions can return multiple values, in a tuple.
     4.  Python can have keyword arguments, where you list the name of the argument(s) at the function invocation site, ie `add(num1=2, num2=4)`
     5.  you can have default arguments, similar to many other languages
     6.  Python functions can also use type annotation / type hinting
@@ -104,3 +104,55 @@
     2.  Global variables that have file scope
     3.  There's no block level scope in Python
     4.  If you attempt to reassign a global variable inside a function, the Python interpreter will instead create a new, local variable with the same name. This was done as a best practice. There is a way to change this behavior, using `global name-of-the-global-variable-you-want-to-reassign` in the function. This is generally considered a bad practice, as it easily leads to bugs.
+25. Explain common data types in Python:
+    1.  lists
+        1.  Ordered, mutable collection of items - `mylist = [0, 1, 2, 3, 4]`
+        2.  Python allows syntax:
+            1.  with an asterix for repeating the items that preceed it - `[1, 2] * 3` returns `[1, 2, 1, 2, 1, 2]`
+            2.  `+` for concatinating lists - `[1, 2, 3] + ['a']` returns `[1, 2, 3, 'a']`
+        3.  lists can have items of different types
+        4.  the `list()` function can create a list out of an iterable - `list(range(10))`
+        5.  Python supports negative integers for accessing items in a list, counting from the end. ie, `mylist[-1]` returns the last item in `mylist`
+        6.  the `[::n]` syntax can be used to get every n item from a list. ie, `[0, 1, 2, 3, 4, 5, 6][::3]` will return every third element, so `[0, 3, 6]`
+        7.  list unpacking allows you to create variables assigned to each item in the list. You must have a variable for each item, otherwise Python will throw an error.
+            1.  `mylist = [1, 2, 3]` `first, second, third = mylist`
+            2.  you can use the syntax `*variable_name_here` to pack the rest of the items into another list. ie, `first, *leftover = mylist`
+            3.  the leftover items can be inbetween as well. ie `first, *leftover, last = mylist`
+        8.  In Python, trying to get the index of a value that doesn't exist in a list will throw a ValueError (different from C based languages, which return -1). One approach to avoid this is to wrap statements like these in conditionals.
+    2.  Tuples
+        1.  Ordered, immutable collections - `mytuple = (1, 3, 5, 7)`
+            1.  can be written without parenthesis - `mytuple = 1, 3, 5, 7`
+        2.  You would use tuples, instead of lists, anywhere you don't want to accidentally modify your list
+    3.  Arrays
+        1.  Ordered, mutable, typed collections - you specify the type
+        2.  Useful primarliy as a performance optimization for large lists in Python (more than tens of thousands)
+    4.  Sets
+        1.  Unordered collections of unique items - `myset = {1, 3}`
+        2.  operators on sets can make them quite useful 
+            1.  `|` union
+            2.  `&` intersection
+            3.  `-` difference
+            4.  `^` symmetric difference
+    5.  Dictionaries
+        1.  Unordered collection of key:value pairs - `mydictionary = {'key': 1}`
+        2.  keys must be an immutable type - commonly strings or numbers
+        3.  Try to access a key that doesn't exist in a dictionary will result in a KeyError
+            1.  check for the existence of the key before attempting access OR
+            2.  there's a `get()` method on dictionaries that will return `None` by default, and also accepts optional default values to return
+26. What is a lambda function?
+    1.  These are anonymous functions in Python, written `lambda parameters:expression`
+27. What is a comprehension in Python, and why would you use it?
+    1.  Alternative syntax for mapping and / or filtering collections. It's more performant & arguably cleaner than using `map()` and / or `filter()`
+    2.  syntax is `result = [expression for item in items]`
+    3.  the `[]` can be `{}` for Sets / Dictionaries, & `()` for Generators
+28. What does `x, y = y, x` do and why?
+    1.  defines a tuple of `(y, x)`, and then unpacks that tuple into the variables `x` & `y`.
+    2.  Can be used as a way of swapping variables, or defining several variables on one line.
+29. What is a Generator, and why would you use one?
+    1.  Iterable, that generates a new value on each iteration. So unlike lists, all the values are NOT created initially. For large lists, this can increase memory efficiency significantly.
+    2.  generators have no `len()`, because all of their values are produced on iteration.
+30. What is the unpack operator?
+    1.  It's a way to unpack the contents of any iterable.
+        1.  `*` for lists & tuples
+        2.  `**` for dictionaries
+    2.  ie, `first = [1, 2, 3] second = [5, 6] combined = [*first, 4, *second]`. combined will be `[1, 2, 3, 4, 5, 6]`
