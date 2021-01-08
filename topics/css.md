@@ -195,3 +195,5 @@
     2.  If you have an area `main` defined with `grid-template-areas`, CSS grid will generate `main-start` & `main-end` lines. You could then use those lines to place some other item, allowing for overlap.
 31. Are the `align-` & `justify-` properties used with flexbox or grid?
     1.  Trick question, those properties are part of the Box Alignment specification. So although they started in flexbox, they are now used for both flexbox & grid (and perhaps others as well).
+32. Does an element with a higher `z-index` always appear appear to be stacked 'on top of' an element with a lower `z-index`? Why?
+    1. Not always. **Sibling** elements appear stacked from top to bottom, based on which has the higher `z-index`. If one of those siblings happens to have children (or descendants) that itself has a `z-index` that is higher than one of the other original siblings, the child element will still not appear stacked above the other sibling in question. [Useful example.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context#the_example)
