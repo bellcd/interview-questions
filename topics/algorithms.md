@@ -50,3 +50,13 @@
       1. Insertion Sort is stable.
    5. Typical use case
       1. Insertion Sort is only really used when you have an already sorted list, and you add - one, two, maybe a handful - of elements to it. In this close to best case scenario, the time complexity would approach O(n), because the looping-backwards-through-part-of-the-list logic is not O(1) only for the handful of elements that are not already sorted. An example of this would be in a database, when you're adding a key to a list of sorted keys.
+7. Merge Sort
+   1. Summarize
+      1. Split your list in half until you have lists of 1 element. A list of 1 element is, by definition, sorted. Then merge your sorted lists of 1 element together.
+   2. List and explain the worst, average, and best case time complexities for Merge Sort.
+      1. Worst O(nlogn), average O(nlogn), best O(nlogn)
+      2. Because you divide the list in half each time, you reduce the number of comparisons you have to do for every element in the list (ie, you avoid having the (n - 1) + (n - 2) ... + 1 number of comparisons that leads to O(n^2) complexity)
+   3. Memory
+      1. Merge Sort is out of place, because you need another array to hold all the elements in the list
+   4. Stability
+      1. Merge Sort is stable
