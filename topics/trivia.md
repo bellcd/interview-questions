@@ -10,3 +10,5 @@
    3. [stackoverflow example](https://stackoverflow.com/questions/5491605/empty-arrays-seem-to-equal-true-and-false-at-the-same-time)
    4. [visual reference](https://dorey.github.io/JavaScript-Equality-Table/)
    5. [spec](https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3)
+2. Tabs or spaces? Why?
+   1. TODO: finish

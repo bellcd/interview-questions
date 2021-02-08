@@ -73,21 +73,23 @@
        1. TODO: finish
    11. Callbacks VS Promises VS async / await
        1.  TODO: finish
-   12. How would you use promises right after each other?
+   12. Asynchronous programming, and why it is important in JavaScript?
+       1.  JavaScript is a single threaded language. That means that your JavaScript code will execute sequentially / synchronously / as it's written, one line after the other. Except that the thing that provides the runtime environment to your JavaScript code (browser, Node.js, etc...), is written in languages that are NOT single threaded. Asynchronous programming in JavaScript refers to the fact that the environment in which your JavaScript code executes can provide APIs that allow the execution of portions of your JavaScript code to happen at later times (ie, `setTimeout` / `fetch` / Promises / `async / await`, etc... ). This allows JavaScript code to handle all sorts of situations where your JavaScript code is not in control of how long it needs to wait for something - network requests are a prime example of this. You provide code that triggers the network request, and does something with the response. But your code doesn't control how long that response takes to come back.
+   13. How would you use promises right after each other?
        1.  TODO: finish
-   13. How do you handle needing to wait for multiple promises to finish?
+   14. How do you handle needing to wait for multiple promises to finish?
        1.  TODO: finish
-   14. Immutability in JavaScript
+   15. Immutability in JavaScript
        1. Are objects & arrays in JavaScript immutable?
        2. How do you make something immutable in JavaScript?
           1. TODO: finish
-   15. Syntactic Sugar, and give at least 1 example
+   16. Syntactic Sugar, and give at least 1 example
        1. When the language provides a different (also simpler / cleaner / easier to understand / shorter / "better" / etc...) syntax for **accomplishing the exact same task**
           1. `async` & `await`, so you don't have to work with `.then` blocks
           2. the `class` keyword in JavaScript
           3. the spread & rest operators
           4. object & array destructuring
-   16. Worker (and when / why you would use one)
+   17. Worker (and when / why you would use one)
 6. What's the difference between
     1. WET & DRY code?
        1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code

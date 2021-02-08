@@ -14,3 +14,15 @@
 2. Explain
    1. Factory & Singleton patterns
       1. TODO: finish
+   2. two-way data binding and one-way data flow, and how they are different?
+      1. TODO: finish
+3. What does great code look like to you?
+   1. Great code to me is code that fulfills its purpose as efficiently as possible. There are a few things to unpack in that statement:
+      1. what is "its purpose"?
+         1. be as fast as possible? - then it should probably be written in a language that's pretty 'close to the metal', ie not JavaScript
+         2. able to be understood by people who aren't intimately familiar with it?
+            1. then variable names like `a` & `b` wouldn't be appropriate, and perhaps something like `questionCountByTopicByPreference` is reasonable
+      2. what is "as efficiently as possible"? efficient for what? or who?
+         1. again - is execution speed the primary concern? memory used? What about likelihood of introducing future bugs with changes & new features? The development cost of finding & fixing those bugs? The priorities around all of these need to be considered.
+         2. something like DRY - don't repeat yourself. It's something of a mantra to some developers. But in certain situations (ie, test suites, for instance), you could argue for a certain level of repetition - to make the code more explicit, and make bugs less likely / less difficult to find.
+   2. Ideally, these types of priorities are decided at the team & business level, and wouldn't be constantly shifting.
