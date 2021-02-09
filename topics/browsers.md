@@ -63,3 +63,5 @@
 3. How do you exert more control over the order the browser downloads resources?
    1. TODO: finish
    2. `async` & `defer` attributes
+4. How do you approach client side data validation in forms & why?
+   1. TODO: finish

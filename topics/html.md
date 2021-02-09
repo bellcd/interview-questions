@@ -46,3 +46,5 @@
 7. When would you use a `<div>` VS a `<span>`?
    1. `<div>` is a block level element, while `<span>` is an in-line element. So a `<div>` is going to require all the horizontal space (in left-to-right languages) for that line, while a `<span>` would sit next to any additional content that comes before or after it if there is room on that line.
    2. Because of this, `<span>`s are typically used to group smaller amounts of text within a line, while `<div>`s are used for larger groupings and layout.
+8. Describe the basics of setting up a form on a webpage
+   1. TODO: finish

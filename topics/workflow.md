@@ -6,3 +6,5 @@
 3. What are the min, max, & average length (in lines) of a file that you write in a codebase (you can guess)?
 4. Do you write tests at work?
 5. Do you use CI at work?
+6. Describe your process when you get stuck
+   1. TODO: finish
