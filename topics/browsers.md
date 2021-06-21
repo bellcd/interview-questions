@@ -3,8 +3,6 @@
 1. Explain:
    1. Document Object Model VS CSS Object Model VS Render Tree VS Critical Render Path
       1. TODO: finish
-   2. the data structure of the DOM
-      1. TODO: finish
    3. data- attributes. Are there limitations to them?
       1. TODO: finish
 2. What's the difference between:
@@ -59,9 +57,16 @@
    14. What happens when I enter my username & password into a form & hit login? Describe at as low a level as you can.
    15. Assuming we're sending the data as JSON & following best practices. The front end encodes the username & password into a JSON object, then sends them in the body of a POST request to the relevant api endpoint of the server.
    16. How do you know when an image has completely loaded?
-       1. Checking a combination of `image.complete` & `image.naturalHeight` / `image.naturalWidth` will tell you [whether the image has been loaded into the DOM](https://html.spec.whatwg.org/multipage/embedded-content.html#dom-img-complete)
+       1. The image will emit a `load` event
+       2. Checking a combination of `image.complete` & `image.naturalHeight` / `image.naturalWidth` will tell you [whether the image has been loaded into the DOM](https://html.spec.whatwg.org/multipage/embedded-content.html#dom-img-complete)
 3. How do you exert more control over the order the browser downloads resources?
    1. TODO: finish
    2. `async` & `defer` attributes
 4. How do you approach client side data validation in forms & why?
    1. TODO: finish
+5. What is the data structure of the DOM?
+   1. tree
+6. What would you use a `DocumentFragment`?
+   1. When you need to do multiple changes to the DOM, doing all the changes in a document fragment, then adding the fragment to the DOM is more performant than doing each change to the DOM. ["Changes made to the fragment don't affect the document (even on reflow) or incur any performance impact when changes are made."](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment)
+7. What does `requestAnimationFrame` do?
+   1. Every time there's a render (ie, before the next repaint), the browser calls `requestAnimationFrame`. It'll never block the UI.

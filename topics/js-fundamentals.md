@@ -2,26 +2,37 @@
 
 1. Describe general pros & cons to using JavaScript
    1. TODO: finish
-2. How was the `this` problem handled before ES6?
+2. What is `this` in JavaScript?
+   1. `this` is a special keyword. It is a runtime binding that is part of a function's execution context
+      2. arrow functions retain the `this` value of the enclosing lexical context.
+      3. Otherwise, the value of `this` is determined by the function's call-site
+         1. Called with `new`? Use the newly constructed object.
+         2. Called with `call`, `apply`, or `bind`? Use the specified object.
+         3. Called with a context object owning the call? Use that context object.
+         4. Default: `undefined` in `strict mode`, global object otherwise.
+3. How was the `this` problem handled before ES6?
    1. TODO: finish
-3. How can you add more methods to an already existing class?
+4. How can you add more methods to an already existing class?
    1. TODO: finish
 5. Explain:
    1. scope
       1. The area of a running program where a lookup for a given variable can happen. Scopes can be nested inside each other, and inner scopes have access to variables defined in outer scopes (but not vice-versa) [docs](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
    2. var VS const VS let
       1. three (3) ways of declaring variables in JavaScript
-      2. var - uses function scope
+      2. var
+         1. uses function scope (or global scope, if not inside a function)
+         2. hoisted to the top of the function, so will evaluate to undefined if accessed before declaration & assignment
       3. const & let
          1. Both use block scope
          2. const variables cannot be reassigned, let variables can
+         3. not hoisted, so will throw a reference error if accessed before declaration & assignment
    3. the keyword `new`
       1. JavaScript is not an object oriented language (OOP), nor is it a functional programming language - JavaScript is a multi-paradigm language. JavaScript does has a `new` keyword that creates results that look like what the `new` keyword does in many OOP languages; however, the details of what actually happens are different.
          1. *JavaScript does NOT have "constructor" functions*. When `new` is used in front of a function invocation, the interpreter does several special things. (So you could say JavaScript has "construction invocations" of a function)
             1. Creates a new object in memory
             2. Assigns the `this` context of the construction invocation of that function to the new object
             3. If no explicit return is declared in the function, returns that newly created object
-   4. prototype delegation
+   4. prototype delegation / prototypical inheritance
       1. Because JavaScript is multi-paradigm, it does not do classing in the same way that OOP languages handle classing (even with the ES6 `class` keyword!)
       2. Instead, JavaScript does something called prototype delegation.
          1. When you tell the interpreter to search for a property (or method, if it's a function) on an object (in JavaScript, arrays and functions are types of objects), the interpreter first looks directly on that object.
@@ -66,9 +77,10 @@
       6. So when we invoke `x2`, what is the value of `a` that that function increments? 0. *0*, not 2. The variable `a` that `x1` has access to and the variable `a` that `x2` have access to are *different variables* (that happen to have the same name), that live in *different backpacks*
       7. So `result4` equals 2, not 4.
    8. event delegation. Describe the performance tradeoffs.
-      1. TODO: finish
+      1. The idea of setting an event listener on a parent / ancestor HTML element, and then checking if the event was on a particular child / descendant HTML element in that one event listener, rather than setting separate event listeners on every HTML element that needs one. Works because of how events bubble.
+      2. performance - TODO: finish
    9.  object literal
-      2. TODO: finish
+      3. TODO: finish
    10. object & array destructuring
        1. TODO: finish
    11. Callbacks VS Promises VS async / await
@@ -90,6 +102,7 @@
           3. the spread & rest operators
           4. object & array destructuring
    17. Worker (and when / why you would use one)
+       1. A worker is something you use in JavaScript to offload computationally expensive operations to another thread (because JavaScript is single-threaded)
 6. What's the difference between
     1. WET & DRY code?
        1. DRY - Don't Repeat Yourself - is the general idea of encouraging efficiency in the way you structure your code
@@ -108,11 +121,10 @@
           1. declared with arrow function syntax `() => {}`
           2. uses the `this` context of its containing scope
     6. the functions `call`, `apply`, & `bind`. What are they used for?
-        1. `call` accepts a list of arguments, whereas `apply` accepts one (1) array with potentially many arguments
-        2. `call` & `apply` are used to invoke another function, optionally with:
-           1. a different `this` context
-           2. additional arguments
-        3. `bind` is used to bind a function's `this` context to a particular `this` context. It returns a new function that will always invoke with the given `this` context, along with any additional arguments passed. A function like this is needed because of how `this` works in JavaScript (ie, the value of `this` is not known until runtime, instead of at author-time, like in other languages)
+        1. `call` & `apply` are used to change the `this` binding of another function
+           1. `call` accepts a list of arguments
+           2. `apply` accepts one (1) array of arguments
+        2. `bind` returns a new function that will always invoke with the given `this` binding, along with any additional arguments passed.
     7. `JSON.stringify()` & `toString()`
         1. `toString()`
             1. method on `Object.prototype`
@@ -154,3 +166,10 @@
     1.  TODO: finish, ie - task queue VS microtask queue VS setAnimationFrame
 13. Are there any downsides to using the microtask queue as your default for async work?
     1.  TODO: finish, ie - microtask queue is blocking to certain browser actions?
+14. What is something interesting about strings in JavaScript?
+    1. Strings are immutable in JavaScript
+ 3. What is the difference between throttling and debouncing?
+    1. debounce
+       1. Every event triggers the start of a new debounce interval. Only after a full debounce interval has passed without interruption, does the action occur
+    2. throttle
+       1. The action can only occur 1x every interval

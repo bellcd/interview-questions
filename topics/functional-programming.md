@@ -30,11 +30,15 @@
 |concurrency||
 |cacheable||
 
-  4. function composition
+4. function composition
      - the concept of building more complex functions from smaller, more narrowly focused functions
      - piping (ie, sending the output of one function as the input of another function)
-  5. currying
+5. partial application
+   1. TODO: finish
+6. currying
      - changing a function so that it returns a new function that solves a more specific version of that problem. Reduces the amount of arguments in the returned function's signature, because at least one of the used-to-be-a-parameter is now an internal variable to that returned function
+7. What's the difference between partial application and currying?
+   1. TODO: finish
 
 ```js
 // not currying
@@ -53,7 +57,7 @@ const add5 = makeAdder(5) // returns a FUNCTION that accepts one argument, and a
 add5(6) // 11
 ```
 
-   6. Immutability
+   1. Immutability
       - Where a data structure is not changeable after creation. Strings are immutable in JavaScript. Objects & arrays are not.
 
 |Pros|Cons|

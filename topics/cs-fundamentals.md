@@ -6,11 +6,13 @@
       2. Examples
          1. Call stacks
          2. Your browsing history, ie - what you access with the back button
+      3. A JavaScript `array` works very nicely as a stack, with the `push` and `pop` methods.
    2. Queues
       1. Often visualized as a real world queue (ie, a checkout queue). Uses First In First Out (FIFO) access order, which means the elements are accessed in the order they were added.
       2. Examples
-         1.  Keyboard buffer
-         2.  Customer service ticketing systems
+         1. Keyboard buffer
+         2. Customer service ticketing systems
+      3. In JavaScript, you would want to make a singly linked list, with `head` & `tail` references. Using an array, each `dequeue` operation is `O(n)`
 2. Explain
    1. Factory & Singleton patterns
       1. TODO: finish
